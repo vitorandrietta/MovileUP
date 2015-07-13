@@ -1,0 +1,8 @@
+git add arquivoTeste
+
+git commit -m "primeiro arquivo de teste" arquivoTeste
+clear
+
+
+
+
