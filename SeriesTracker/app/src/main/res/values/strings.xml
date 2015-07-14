@@ -3,5 +3,9 @@
     <string name="default_espisode_name">O Último sussurro</string>
     <string name="episodeTime">00/00/0000 at 00:00</string>
     <string name="episodeDescription">The last Hope \n\n The last Hope \n\n The last Hope \n\n The last Hope \n\n The last Hope \n\n The last Hope</string>
+    <string name="episodeMainImageDes">contains the picture of the show</string>
+    <string name="overlayDescription">overlay image</string>
+    <string name="summary">SUMMARY</string>
+    <string name="clockDescription">clock image</string>
     @string/episodeTime
 </resources>
