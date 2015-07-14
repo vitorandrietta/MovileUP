@@ -5,4 +5,8 @@
         <!-- Customize your theme here. -->
     </style>
 
+    <style name="AppTheme.EpisodeDetails.Card.Container" parent="CardView">
+        <item name="cardCornerRadius">2dp</item>
+    </style>
+
 </resources>

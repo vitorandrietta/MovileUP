@@ -35,5 +35,6 @@ dependencies {
     //adicao de bibliotecas
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.android.support:appcompat-v7:22.2.0'
+    compile 'com.android.support:cardview-v7:22.1.0'
 
 }
