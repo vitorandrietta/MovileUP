@@ -1,12 +1,8 @@
-
-
-
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-
 
 
     <LinearLayout
@@ -24,17 +20,17 @@
                 android:id="@+id/exibitionImage"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:src="@drawable/highlight_placeholder"
+                android:contentDescription="@string/episodeMainImageDes"
                 android:scaleType="centerCrop"
-                android:contentDescription="@string/episodeMainImageDes" />
+                android:src="@drawable/highlight_placeholder" />
 
 
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:src="@drawable/overlay"
+                android:contentDescription="@string/overlayDescription"
                 android:scaleType="fitXY"
-                android:contentDescription="@string/overlayDescription" />
+                android:src="@drawable/overlay" />
 
             <TextView
                 android:id="@+id/episodeTitle"
@@ -43,9 +39,9 @@
                 android:layout_alignBottom="@id/exibitionImage"
                 android:layout_marginBottom="@dimen/default_episode_name_margin"
                 android:layout_marginLeft="@dimen/default_episode_name_margin"
+                android:text="@string/default_espisode_name"
                 android:textColor="@color/default_textColor_first"
-                android:textSize="@dimen/default_textSize_veryLarge"
-                android:text="@string/default_espisode_name" />
+                android:textSize="@dimen/default_textSize_veryLarge" />
 
         </RelativeLayout>
 
@@ -53,52 +49,53 @@
 
             android:layout_width="match_parent"
             android:layout_height="@dimen/default_episode_hour_height"
-            android:layout_marginTop="@dimen/card_content_padding"
             android:layout_marginLeft="@dimen/card_content_padding"
             android:layout_marginRight="@dimen/card_content_padding"
-            >
+            android:layout_marginTop="@dimen/card_content_padding">
 
             <LinearLayout
-                android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:orientation="horizontal"
 
 
                 >
+
                 <ImageView
-                    android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
-                    android:src="@drawable/episode_details_clock"
-                    android:scaleType="centerCrop"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/clockDescription"
                     android:paddingLeft="@dimen/default_episode_clock_padding"
                     android:paddingTop="@dimen/default_episode_clock_padding"
+                    android:scaleType="centerCrop"
 
-                    android:contentDescription="@string/clockDescription">
+                    android:src="@drawable/episode_details_clock">
 
 
-               </ImageView>
+                </ImageView>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/default_episode_name_margin"
-                    android:textSize="@dimen/default_textSize_medium"
-                    android:paddingTop="@dimen/default_episode_time_top_padding"
                     android:paddingLeft="@dimen/default_episode_time_left_padding"
+                    android:paddingTop="@dimen/default_episode_time_top_padding"
                     android:text="@string/episodeTime"
                     android:textColor="@color/default_color_first"
+                    android:textSize="@dimen/default_textSize_medium"
+                    android:id="@+id/episodeBeginTime"
                     />
 
             </LinearLayout>
         </android.support.v7.widget.CardView>
 
         <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
-            card_view:cardCornerRadius="@dimen/card_cornerRadius"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/default_spacing_medium"
             android:layout_marginLeft="@dimen/card_content_padding"
             android:layout_marginRight="@dimen/card_content_padding"
+            android:layout_marginTop="@dimen/default_spacing_medium"
+            card_view:cardCornerRadius="@dimen/card_cornerRadius"
 
             >
 
@@ -106,38 +103,36 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
-                android:paddingLeft="@dimen/default_spacing_large"
-                >
+                android:paddingLeft="@dimen/default_spacing_large">
 
                 <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingRight="@dimen/default_spacing_large"
-                android:paddingTop="@dimen/default_spacing_large"
-                android:text="@string/summary"
-                android:textSize="@dimen/default_textSize_verySmall"
-                android:textColor="@color/default_color_third"
-
-                />
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingRight="@dimen/default_spacing_large"
+                    android:paddingTop="@dimen/default_spacing_large"
+                    android:text="@string/summary"
+                    android:textColor="@color/default_color_third"
+                    android:textSize="@dimen/default_textSize_verySmall"
+                    android:id="@+id/episodeDescription"
+                    />
 
                 <View
                     android:layout_width="@dimen/default_episode_summary_line_width"
                     android:layout_height="@dimen/default_episode_summary_line_height"
-                    android:background="@color/default_background_third"
-                    android:paddingRight="@dimen/default_episode_summary_line_padding_right"
                     android:layout_marginTop="@dimen/default_episode_summary_line_margin_top"
-                    />
+                    android:background="@color/default_background_third"
+                    android:paddingRight="@dimen/default_episode_summary_line_padding_right" />
 
                 <TextView
+                    android:id="@+id/showDescription"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/default_episode_description_margin_top"
-                    android:layout_marginRight="@dimen/default_spacing_large"
-                    android:textColor="@color/default_textColor_fourth"
-                    android:textSize="@dimen/default_textSize_medium"
                     android:layout_marginBottom="@dimen/default_episode_description_margin_bottom"
-                    android:id="@+id/showDescription"
-                    android:text="@string/episodeDescription"/>
+                    android:layout_marginRight="@dimen/default_spacing_large"
+                    android:layout_marginTop="@dimen/default_episode_description_margin_top"
+                    android:text="@string/episodeDescription"
+                    android:textColor="@color/default_textColor_fourth"
+                    android:textSize="@dimen/default_textSize_medium" />
             </LinearLayout>
         </android.support.v7.widget.CardView>
 
