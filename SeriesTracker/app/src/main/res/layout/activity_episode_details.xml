@@ -37,6 +37,7 @@
                 android:contentDescription="@string/overlayDescription" />
 
             <TextView
+                android:id="@+id/episodeTitle"
                 android:layout_width="@dimen/default_episode_name_width"
                 android:layout_height="wrap_content"
                 android:layout_alignBottom="@id/exibitionImage"
