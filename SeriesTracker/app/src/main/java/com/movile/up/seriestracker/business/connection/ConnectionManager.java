@@ -1,4 +1,4 @@
-package com.movile.up.seriestracker.business;
+package com.movile.up.seriestracker.business.connection;
 import android.content.Context;
 import com.movile.up.seriestracker.R;
 import java.io.IOException;

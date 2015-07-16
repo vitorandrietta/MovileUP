@@ -1,9 +1,9 @@
-package com.movile.up.seriestracker.business;
+package com.movile.up.seriestracker.business.assynctask;
 
 import android.content.Context;
 import android.os.AsyncTask;
 
-import com.movile.up.seriestracker.model.fetchers.FetchLocalEpisodeDetails;
+import com.movile.up.seriestracker.business.fetchers.FetchLocalEpisodeDetails;
 import com.movile.up.seriestracker.model.models.Episode;
 
 import com.movile.up.seriestracker.interfaces.OnOperationListener;

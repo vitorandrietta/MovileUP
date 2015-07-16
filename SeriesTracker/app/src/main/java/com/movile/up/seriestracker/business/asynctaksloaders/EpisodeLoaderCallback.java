@@ -1,4 +1,4 @@
-package com.movile.up.seriestracker.business;
+package com.movile.up.seriestracker.business.asynctaksloaders;
 
 import android.app.LoaderManager;
 import android.content.Context;
@@ -16,6 +16,7 @@ public class EpisodeLoaderCallback implements LoaderManager.LoaderCallbacks<Epis
      private OnOperationListener<Episode> episodeListener;
      private  Context context;
 
+
     public EpisodeLoaderCallback(OnOperationListener<Episode> operation,Context context){
         this.episodeListener = operation;
         this.context = context;
@@ -23,12 +24,12 @@ public class EpisodeLoaderCallback implements LoaderManager.LoaderCallbacks<Epis
 
     @Override
     public Loader<Episode> onCreateLoader(int id, Bundle args) {
-        return new EpisodeLoader(this.context,this.episodeListener);
+        return new EpisodeLoader(this.context);
     }
 
     @Override
     public void onLoadFinished(Loader<Episode> loader, Episode data) {
-
+        episodeListener.onOperationSuccess(data);
     }
 
     @Override

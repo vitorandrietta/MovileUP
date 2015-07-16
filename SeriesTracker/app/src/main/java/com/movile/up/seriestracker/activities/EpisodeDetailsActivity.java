@@ -1,15 +1,17 @@
 package com.movile.up.seriestracker.activities;
 
 import android.app.Activity;
+import android.graphics.Bitmap;
 import android.os.PersistableBundle;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.movile.up.seriestracker.R;
-import com.movile.up.seriestracker.business.EpisodeLoaderCallback;
-import com.movile.up.seriestracker.business.JsonToEpisodeTask;
+import com.movile.up.seriestracker.business.assynctask.RemoteImageAsyncTask;
+import com.movile.up.seriestracker.business.asynctaksloaders.EpisodeLoaderCallback;
+import com.movile.up.seriestracker.interfaces.ImageLoader;
 import com.movile.up.seriestracker.interfaces.OnOperationListener;
 import com.movile.up.seriestracker.model.models.Episode;
 
@@ -17,7 +19,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 
-public class EpisodeDetailsActivity extends Activity implements OnOperationListener<Episode> {
+public class EpisodeDetailsActivity extends Activity implements OnOperationListener<Episode>,ImageLoader {
 
     private static final String TAG = EpisodeDetailsActivity.class.getSimpleName();
     private String estadoSalvo;
@@ -40,6 +42,10 @@ public class EpisodeDetailsActivity extends Activity implements OnOperationListe
         episodeDescriptionText.setText(result.overview());
         episodeTitleText.setText(result.title());
         episodeBeginTimeText.setText(episodeFormatedBeginTime);
+
+        String episodeImageUrl = result.images().screenshot().get("full");
+        new RemoteImageAsyncTask(this).execute(episodeImageUrl);
+
     }
 
     @Override
@@ -107,5 +113,11 @@ public class EpisodeDetailsActivity extends Activity implements OnOperationListe
         super.onPause();
         this.estadoSalvo = "passei por aqui";
 
+    }
+
+    @Override
+    public void LoadImage(Bitmap image) {
+        ImageView episodeImage = (ImageView)findViewById(R.id.episodeImage);
+        episodeImage.setImageBitmap(image);
     }
 }

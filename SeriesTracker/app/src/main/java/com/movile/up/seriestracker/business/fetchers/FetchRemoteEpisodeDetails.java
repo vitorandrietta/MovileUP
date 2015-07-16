@@ -1,9 +1,10 @@
-package com.movile.up.seriestracker.business;
+package com.movile.up.seriestracker.business.fetchers;
 
 import android.content.Context;
 import android.util.Log;
 
 import com.movile.up.seriestracker.R;
+import com.movile.up.seriestracker.business.connection.ConnectionManager;
 import com.movile.up.seriestracker.model.converters.ModelConverter;
 import com.movile.up.seriestracker.model.models.Episode;
 
@@ -11,15 +12,15 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
-import java.sql.Connection;
+import java.text.MessageFormat;
 
 /**
  * Created by android on 7/16/15.
  */
-public class FetchEpisodeRemote {
+public class FetchRemoteEpisodeDetails {
 
 
-    private static final String TAG = FetchEpisodeRemote.class.getSimpleName();
+    private static final String TAG = FetchRemoteEpisodeDetails.class.getSimpleName();
     private static final String ASSET_NAME = "episode.json";
 
 
@@ -27,10 +28,18 @@ public class FetchEpisodeRemote {
         Episode episode = null;
         InputStreamReader reader = null;
 
+
         try {
-            String url = context.getString(R.string.api_url_base).
-                    concat(context.getString(R.string.api_url_episode)).concat("?extended=full,images");
+
+            String baseUrl = context.getString(R.string.api_url_base);
+            String requestUrl = (context.getString(R.string.api_url_episode));
+            String aditionalUrlParameters = "?extended=full,images";
+            MessageFormat urlParametersFormater = new MessageFormat(requestUrl);
+            String[] episodeDetails = new String[]{"breaking-bad","2","1"};
+            requestUrl = urlParametersFormater.format(episodeDetails);
+            String url= baseUrl.concat(requestUrl).concat(aditionalUrlParameters);
             HttpURLConnection connection = ConnectionManager.configureConnection(url, context, "GET");
+
             InputStream stream = null;
             connection.connect();
             if (connection.getResponseCode() == HttpURLConnection.HTTP_OK) {
@@ -38,9 +47,8 @@ public class FetchEpisodeRemote {
                 reader = new InputStreamReader(stream);
                 episode = new ModelConverter().toEpisode(reader);
             }
-            reader = new InputStreamReader(stream);
-            episode = new ModelConverter().toEpisode(reader);
-        } catch (IOException e) {
+
+       } catch (IOException e) {
             Log.e(TAG, "Error loading local content from file", e);
         } finally {
             if (reader != null) {

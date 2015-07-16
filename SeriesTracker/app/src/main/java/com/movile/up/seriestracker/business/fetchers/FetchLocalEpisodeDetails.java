@@ -1,4 +1,4 @@
-package com.movile.up.seriestracker.model.fetchers;
+package com.movile.up.seriestracker.business.fetchers;
 
 /**
  * Created by root on 15/07/15.

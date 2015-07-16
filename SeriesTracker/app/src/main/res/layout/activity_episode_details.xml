@@ -17,7 +17,7 @@
             android:layout_height="@dimen/default_episode_header_height">
 
             <ImageView
-                android:id="@+id/exibitionImage"
+                android:id="@+id/episodeImage"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:contentDescription="@string/episodeMainImageDes"
@@ -36,7 +36,7 @@
                 android:id="@+id/episodeTitle"
                 android:layout_width="@dimen/default_episode_name_width"
                 android:layout_height="wrap_content"
-                android:layout_alignBottom="@id/exibitionImage"
+                android:layout_alignBottom="@id/episodeImage"
                 android:layout_marginBottom="@dimen/default_episode_name_margin"
                 android:layout_marginLeft="@dimen/default_episode_name_margin"
                 android:text="@string/default_espisode_name"
