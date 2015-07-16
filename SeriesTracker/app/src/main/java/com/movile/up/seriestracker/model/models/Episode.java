@@ -1,5 +1,4 @@
-package com.movile.up.seriestracker.model;
-import java.io.Serializable;
+package com.movile.up.seriestracker.model.models;
 import com.google.gson.annotations.SerializedName;
 
 

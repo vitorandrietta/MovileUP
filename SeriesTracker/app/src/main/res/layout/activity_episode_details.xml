@@ -77,7 +77,6 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/default_episode_name_margin"
                     android:paddingLeft="@dimen/default_episode_time_left_padding"
                     android:paddingTop="@dimen/default_episode_time_top_padding"
                     android:text="@string/episodeTime"
@@ -113,7 +112,7 @@
                     android:text="@string/summary"
                     android:textColor="@color/default_color_third"
                     android:textSize="@dimen/default_textSize_verySmall"
-                    android:id="@+id/episodeDescription"
+
                     />
 
                 <View
@@ -124,7 +123,7 @@
                     android:paddingRight="@dimen/default_episode_summary_line_padding_right" />
 
                 <TextView
-                    android:id="@+id/showDescription"
+                    android:id="@+id/episodeDescription"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/default_episode_description_margin_bottom"

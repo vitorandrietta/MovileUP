@@ -1,10 +1,10 @@
-package com.movile.up.seriestracker.converter;
+package com.movile.up.seriestracker.model.converters;
 
 
 import com.google.gson.Gson;
-import com.movile.up.seriestracker.model.Episode;
-import com.movile.up.seriestracker.model.Season;
-import com.movile.up.seriestracker.model.Show;
+import com.movile.up.seriestracker.model.models.Episode;
+import com.movile.up.seriestracker.model.models.Season;
+import com.movile.up.seriestracker.model.models.Show;
 
 import java.io.Reader;
 

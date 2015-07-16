@@ -1,38 +1,53 @@
-package com.movile.up.seriestracker;
+package com.movile.up.seriestracker.activities;
 
+import android.app.Activity;
 import android.os.PersistableBundle;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.widget.TextView;
-import android.widget.Toolbar;
 
-import com.movile.up.seriestracker.business.OnOperationListener;
-import com.movile.up.seriestracker.model.Episode;
+import com.movile.up.seriestracker.R;
+import com.movile.up.seriestracker.business.EpisodeLoaderCallback;
+import com.movile.up.seriestracker.business.JsonToEpisodeTask;
+import com.movile.up.seriestracker.interfaces.OnOperationListener;
+import com.movile.up.seriestracker.model.models.Episode;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 
-public class EpisodeDetailsActivity extends ActionBarActivity implements OnOperationListener<Episode> {
+public class EpisodeDetailsActivity extends Activity implements OnOperationListener<Episode> {
 
     private static final String TAG = EpisodeDetailsActivity.class.getSimpleName();
     private String estadoSalvo;
 
     @Override
     public void onOperationSuccess(Episode result) {
-        TextView episodeDescription = (TextView) findViewById(R.id.episodeDescription);
-        TextView episodeTitle = (TextView) findViewById(R.id.episodeTitle);
-        TextView episodeBeginTime = (TextView) findViewById(R.id.episodeBeginTime);
-
-        episodeDescription.setText(result.overview());
-        episodeTitle.setText(result.title());
-        episodeBeginTime.setText(result.firstAired());
+        SimpleDateFormat utcToDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
+        Date episodeDate = null;
+        String episodeFormatedBeginTime=null;
+        try {
+            episodeDate = utcToDateFormat.parse(result.firstAired());
+            episodeFormatedBeginTime = new SimpleDateFormat("yyyy/MM/dd 'at' HH:mm").format(episodeDate);
+        } catch (Exception e) {
+            e.printStackTrace();
+            Log.d(TAG, "Error converting episode begining time to datetime");
+        }
+        TextView episodeDescriptionText = (TextView) findViewById(R.id.episodeDescription);
+        TextView episodeTitleText = (TextView) findViewById(R.id.episodeTitle);
+        TextView episodeBeginTimeText = (TextView) findViewById(R.id.episodeBeginTime);
+        episodeDescriptionText.setText(result.overview());
+        episodeTitleText.setText(result.title());
+        episodeBeginTimeText.setText(episodeFormatedBeginTime);
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        getLoaderManager().initLoader(
+                0, null, new EpisodeLoaderCallback(this,this)
+        ).forceLoad();
         setContentView(R.layout.activity_episode_details);
 
     }
@@ -42,7 +57,7 @@ public class EpisodeDetailsActivity extends ActionBarActivity implements OnOpera
         super.onRestoreInstanceState(savedInstanceState);
         String msg = savedInstanceState.getString("estadoSalvo");
 
-           Log.d(TAG,msg);
+        Log.d(TAG, msg);
 
     }
 

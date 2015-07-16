@@ -1,12 +1,13 @@
-package com.movile.up.seriestracker.business;
+package com.movile.up.seriestracker.model.fetchers;
 
 /**
  * Created by root on 15/07/15.
  */
 import android.content.Context;
 import android.util.Log;
-import com.movile.up.seriestracker.business.ModelConverter;
-import com.movile.up.seriestracker.model.Episode;
+
+import com.movile.up.seriestracker.model.converters.ModelConverter;
+import com.movile.up.seriestracker.model.models.Episode;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -16,7 +17,7 @@ public class FetchLocalEpisodeDetails
 {
 
     private static final String TAG = FetchLocalEpisodeDetails.class.getSimpleName();
-    private static final String ASSET_NAME = "res/jsonFiles/episode.json";
+    private static final String ASSET_NAME = "episode.json";
 
     public Episode get(Context context) {
         Episode episode = null;

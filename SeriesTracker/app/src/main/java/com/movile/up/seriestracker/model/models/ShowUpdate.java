@@ -1,4 +1,4 @@
-package com.movile.up.seriestracker.model;
+package com.movile.up.seriestracker.model.models;
 
 import java.io.Serializable;
 
