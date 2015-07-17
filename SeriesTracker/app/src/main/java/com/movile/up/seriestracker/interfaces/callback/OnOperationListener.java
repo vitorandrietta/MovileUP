@@ -1,4 +1,4 @@
-package com.movile.up.seriestracker.interfaces;
+package com.movile.up.seriestracker.interfaces.callback;
 
 /**
  * Created by android on 7/15/15.

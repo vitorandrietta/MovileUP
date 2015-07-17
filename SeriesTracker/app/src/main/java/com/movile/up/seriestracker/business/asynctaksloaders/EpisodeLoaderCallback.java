@@ -5,7 +5,7 @@ import android.content.Context;
 import android.content.Loader;
 import android.os.Bundle;
 
-import com.movile.up.seriestracker.interfaces.OnOperationListener;
+import com.movile.up.seriestracker.interfaces.callback.OnOperationListener;
 import com.movile.up.seriestracker.model.models.Episode;
 
 /**

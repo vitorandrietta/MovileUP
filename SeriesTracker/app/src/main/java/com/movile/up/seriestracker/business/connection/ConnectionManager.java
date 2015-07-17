@@ -3,6 +3,8 @@ import android.content.Context;
 import android.content.res.Resources;
 
 import com.movile.up.seriestracker.R;
+import com.movile.up.seriestracker.configuration.ApiConfiguration;
+
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.ProtocolException;
@@ -30,8 +32,8 @@ public class ConnectionManager {
         }
         connection.setDoInput(true);
         connection.setRequestProperty("Content-Type", "application/json");
-        connection.setRequestProperty("trakt-api-version",context.getResources().getString(R.string.api_version));
-        connection.setRequestProperty("trakt-api-key",context.getResources().getString(R.string.api_key));
+        connection.setRequestProperty("trakt-api-version",ApiConfiguration.API_VERSION);
+        connection.setRequestProperty("trakt-api-key", ApiConfiguration.API_KEY);
         return connection;
     }
 }

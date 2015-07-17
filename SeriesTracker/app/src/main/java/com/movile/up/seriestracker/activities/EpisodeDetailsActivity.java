@@ -1,7 +1,6 @@
 package com.movile.up.seriestracker.activities;
 
 import android.app.Activity;
-import android.graphics.Bitmap;
 import android.os.PersistableBundle;
 import android.os.Bundle;
 import android.util.Log;
@@ -10,13 +9,9 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.movile.up.seriestracker.R;
-import com.movile.up.seriestracker.business.assynctask.RemoteImageAsyncTask;
-import com.movile.up.seriestracker.business.asynctaksloaders.EpisodeLoaderCallback;
 import com.movile.up.seriestracker.business.presenters.EpisodeDetailsPresenter;
 import com.movile.up.seriestracker.business.restclients.EpisodeRestClient;
-import com.movile.up.seriestracker.interfaces.EpisodeDetailsView;
-import com.movile.up.seriestracker.interfaces.ImageLoader;
-import com.movile.up.seriestracker.interfaces.OnOperationListener;
+import com.movile.up.seriestracker.interfaces.view.EpisodeDetailsView;
 import com.movile.up.seriestracker.model.models.Episode;
 
 import java.text.SimpleDateFormat;

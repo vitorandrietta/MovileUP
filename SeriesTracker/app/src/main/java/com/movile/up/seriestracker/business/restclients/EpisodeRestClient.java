@@ -1,15 +1,11 @@
 package com.movile.up.seriestracker.business.restclients;
 
 import android.content.Context;
-import android.content.res.Resources;
 import android.util.Log;
 
 import com.movile.up.seriestracker.R;
-import com.movile.up.seriestracker.business.connection.ConnectionManager;
 import com.movile.up.seriestracker.business.presenters.EpisodeDetailsPresenter;
-import com.movile.up.seriestracker.interfaces.EpisodeDetailsView;
-import com.movile.up.seriestracker.interfaces.EpisodeRemoteService;
-import com.movile.up.seriestracker.interfaces.OnOperationListener;
+import com.movile.up.seriestracker.interfaces.rest.EpisodeRemoteService;
 import com.movile.up.seriestracker.model.models.Episode;
 
 import retrofit.Callback;

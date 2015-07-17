@@ -14,6 +14,7 @@
     <color name="default_background_second">#FFFFFF</color>
     <color name="default_background_third">#E5E5E5</color>
     <color name="default_background_fourth">#FF9800</color>
+    <color name="default_background_season">#E1E1E1</color>
 
     <!-- Theme -->
     <color name="theme_colorPrimary">@color/default_color_first</color>

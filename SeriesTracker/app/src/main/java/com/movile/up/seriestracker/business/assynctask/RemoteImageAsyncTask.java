@@ -5,7 +5,7 @@ import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.util.Log;
 
-import com.movile.up.seriestracker.interfaces.ImageLoader;
+import com.movile.up.seriestracker.interfaces.image.ImageLoader;
 
 import java.io.IOException;
 import java.net.URL;

@@ -1,4 +1,4 @@
-package com.movile.up.seriestracker.interfaces;
+package com.movile.up.seriestracker.interfaces.image;
 
 import android.graphics.Bitmap;
 

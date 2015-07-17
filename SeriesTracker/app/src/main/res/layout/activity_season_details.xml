@@ -1,0 +1,42 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.movile.up.seriestracker.activities.SeasonDetailsActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/default_color_third"
+        >
+
+        <RelativeLayout
+            android:id="@+id/seasonHeader"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/default_season_header_height">
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/default_season_header_image_height" />
+            <ImageView
+                android:layout_width="@dimen/default_season_thumbnail__width"
+                android:layout_height="@dimen/default_season_thumbnail__height"
+                android:layout_marginLeft="@dimen/default_season_thumbnail_margin_left"
+                android:layout_marginTop="@dimen/default_season_thumbnail_margin_top"
+                android:id="@+id/seasonThumbnail"
+                />
+           <TextView
+               android:layout_width="@dimen/default_season_year_width"
+               android:layout_height="@dimen/default_season_year_height"
+               android:layout_alignTop="@id/seasonThumbnail"
+               android:layout_marginBottom="@dimen/default_season_year_margin_bottom"
+               android:layout_marginLeft="@dimen/default_season_year_margin_left"
+               />
+
+        </RelativeLayout>
+        <!--aqui o listView-->
+    </LinearLayout>
+
+
+</ScrollView>

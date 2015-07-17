@@ -6,7 +6,7 @@ import android.os.AsyncTask;
 import com.movile.up.seriestracker.business.fetchers.FetchLocalEpisodeDetails;
 import com.movile.up.seriestracker.model.models.Episode;
 
-import com.movile.up.seriestracker.interfaces.OnOperationListener;
+import com.movile.up.seriestracker.interfaces.callback.OnOperationListener;
 
 /**
  * Created by root on 15/07/15.
