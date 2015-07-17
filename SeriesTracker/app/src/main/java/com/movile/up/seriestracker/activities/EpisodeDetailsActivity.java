@@ -8,9 +8,13 @@ import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.movile.up.seriestracker.R;
 import com.movile.up.seriestracker.business.assynctask.RemoteImageAsyncTask;
 import com.movile.up.seriestracker.business.asynctaksloaders.EpisodeLoaderCallback;
+import com.movile.up.seriestracker.business.presenters.EpisodeDetailsPresenter;
+import com.movile.up.seriestracker.business.restclients.EpisodeRestClient;
+import com.movile.up.seriestracker.interfaces.EpisodeDetailsView;
 import com.movile.up.seriestracker.interfaces.ImageLoader;
 import com.movile.up.seriestracker.interfaces.OnOperationListener;
 import com.movile.up.seriestracker.model.models.Episode;
@@ -19,12 +23,12 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 
-public class EpisodeDetailsActivity extends Activity implements OnOperationListener<Episode>,ImageLoader {
+public class EpisodeDetailsActivity extends Activity implements EpisodeDetailsView {
 
     private static final String TAG = EpisodeDetailsActivity.class.getSimpleName();
     private String estadoSalvo;
 
-    @Override
+    /*@Override
     public void onOperationSuccess(Episode result) {
         SimpleDateFormat utcToDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
         Date episodeDate = null;
@@ -36,6 +40,7 @@ public class EpisodeDetailsActivity extends Activity implements OnOperationListe
             e.printStackTrace();
             Log.d(TAG, "Error converting episode begining time to datetime");
         }
+
         TextView episodeDescriptionText = (TextView) findViewById(R.id.episodeDescription);
         TextView episodeTitleText = (TextView) findViewById(R.id.episodeTitle);
         TextView episodeBeginTimeText = (TextView) findViewById(R.id.episodeBeginTime);
@@ -44,17 +49,22 @@ public class EpisodeDetailsActivity extends Activity implements OnOperationListe
         episodeBeginTimeText.setText(episodeFormatedBeginTime);
 
         String episodeImageUrl = result.images().screenshot().get("full");
-        new RemoteImageAsyncTask(this).execute(episodeImageUrl);
-
-    }
+        //new RemoteImageAsyncTask(this).execute(episodeImageUrl);
+        ImageView episodeImage = (ImageView)findViewById(R.id.episodeImage);
+        Glide.with(this)
+                .load(episodeImageUrl)
+                .into(episodeImage);
+    }*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getLoaderManager().initLoader(
-                0, null, new EpisodeLoaderCallback(this,this)
-        ).forceLoad();
         setContentView(R.layout.activity_episode_details);
+        //        getLoaderManager().initLoader(
+        //              0, null, new EpisodeLoaderCallback(this,this)
+        //    ).forceLoad();
+        EpisodeDetailsPresenter episodePresenter = new EpisodeDetailsPresenter(this);
+        EpisodeRestClient.processSpecificEpisode("breaking-bad","2","4",episodePresenter,this);
 
     }
 
@@ -115,9 +125,38 @@ public class EpisodeDetailsActivity extends Activity implements OnOperationListe
 
     }
 
-    @Override
+    /*@Override
     public void LoadImage(Bitmap image) {
         ImageView episodeImage = (ImageView)findViewById(R.id.episodeImage);
         episodeImage.setImageBitmap(image);
+    }*/
+
+    @Override
+    public void displayEpisode(Episode episode) {
+
+        SimpleDateFormat utcToDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
+        Date episodeDate = null;
+        String episodeFormatedBeginTime=null;
+        try {
+            episodeDate = utcToDateFormat.parse(episode.firstAired());
+            episodeFormatedBeginTime = new SimpleDateFormat("yyyy/MM/dd 'at' HH:mm").format(episodeDate);
+        } catch (Exception e) {
+            e.printStackTrace();
+            Log.d(TAG, "Error converting episode begining time to datetime");
+        }
+
+        TextView episodeDescriptionText = (TextView) findViewById(R.id.episodeDescription);
+        TextView episodeTitleText = (TextView) findViewById(R.id.episodeTitle);
+        TextView episodeBeginTimeText = (TextView) findViewById(R.id.episodeBeginTime);
+        episodeDescriptionText.setText(episode.overview());
+        episodeTitleText.setText(episode.title());
+        episodeBeginTimeText.setText(episodeFormatedBeginTime);
+
+        String episodeImageUrl = episode.images().screenshot().get("full");
+        //new RemoteImageAsyncTask(this).execute(episodeImageUrl);
+        ImageView episodeImage = (ImageView)findViewById(R.id.episodeImage);
+        Glide.with(this)
+                .load(episodeImageUrl)
+                .into(episodeImage);
     }
 }

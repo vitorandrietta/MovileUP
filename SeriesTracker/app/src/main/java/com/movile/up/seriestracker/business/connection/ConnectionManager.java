@@ -1,5 +1,7 @@
 package com.movile.up.seriestracker.business.connection;
 import android.content.Context;
+import android.content.res.Resources;
+
 import com.movile.up.seriestracker.R;
 import java.io.IOException;
 import java.net.HttpURLConnection;
@@ -28,8 +30,8 @@ public class ConnectionManager {
         }
         connection.setDoInput(true);
         connection.setRequestProperty("Content-Type", "application/json");
-        connection.setRequestProperty("trakt-api-version",context.getString(R.string.api_version));
-        connection.setRequestProperty("trakt-api-key",context.getString(R.string.api_key));
+        connection.setRequestProperty("trakt-api-version",context.getResources().getString(R.string.api_version));
+        connection.setRequestProperty("trakt-api-key",context.getResources().getString(R.string.api_key));
         return connection;
     }
 }

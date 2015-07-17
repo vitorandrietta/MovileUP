@@ -22,6 +22,8 @@
             </intent-filter>
 
         </activity>
+        <meta-data android:name="com.movile.up.seriestracker.configuration.GlideConfiguration"
+            android:value="GlideModule"/>
     </application>
 
 </manifest>

@@ -35,7 +35,7 @@ public class FetchRemoteEpisodeDetails {
             String requestUrl = (context.getString(R.string.api_url_episode));
             String aditionalUrlParameters = "?extended=full,images";
             MessageFormat urlParametersFormater = new MessageFormat(requestUrl);
-            String[] episodeDetails = new String[]{"breaking-bad","2","1"};
+            String[] episodeDetails = new String[]{"the-walking-dead","5","16"};
             requestUrl = urlParametersFormater.format(episodeDetails);
             String url= baseUrl.concat(requestUrl).concat(aditionalUrlParameters);
             HttpURLConnection connection = ConnectionManager.configureConnection(url, context, "GET");
