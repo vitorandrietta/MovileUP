@@ -21,7 +21,7 @@ public interface EpisodeRemoteService {
             "trakt-api-version: "+ ApiConfiguration.API_VERSION,
             "trakt-api-key: " + ApiConfiguration.API_KEY
     })
-    @GET("/shows/{show}/seasons/{season}/episodes/{episode}?extended=full,images")
+    @GET("/shows/{show}/seasons/{season}/episodes/{episode}?extended=full,image")
     void getEpisodeDetails(
             @Path("show") String show,
             @Path("season") long season,

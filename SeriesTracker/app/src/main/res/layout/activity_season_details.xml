@@ -5,86 +5,20 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:background="@color/default_background_season"
+
         tools:context="com.movile.up.seriestracker.activities.SeasonDetailsActivity"
         >
-
-        <RelativeLayout
-            android:id="@+id/seasonHeader"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/default_season_header_height">
-            <ImageView
-                android:id="@+id/seasonImage"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/default_season_header_image_height" />
-            <ImageView
-                android:layout_width="@dimen/default_season_thumbnail__width"
-                android:layout_height="@dimen/default_season_thumbnail__height"
-                android:layout_marginLeft="@dimen/default_season_thumbnail_margin_left"
-                android:layout_marginTop="@dimen/default_season_thumbnail_margin_top"
-                android:id="@+id/seasonThumbnail"
-                />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/default_textSize_verySmall"
-                android:textColor="@color/default_textColor_third"
-                android:layout_below="@id/seasonThumbnail"
-                android:layout_marginTop="@dimen/default_small_margin"
-                android:text="@string/episodes"
-                android:layout_marginLeft="@dimen/default_season_thumbnail_margin_left"
-
-                />
-
-            <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
-                card_view:cardUseCompatPadding="true"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:layout_marginLeft="296dp"
-                android:layout_marginRight="@dimen/card_content_margin"
-                android:layout_marginTop="264dp"
-                style="@style/AppTheme.Season.Card.Container"
-
-                >
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/default_color_second"
-                >
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/default_textColor_first"
-                    android:gravity="center"
-                    android:textSize="@dimen/default_textSize_large"
-                    android:id="@+id/seasonRating"
-                    />
-            </FrameLayout>
-            </android.support.v7.widget.CardView>
-        </RelativeLayout>
-
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/default_textColor_first"
-            >
+        <!--tirar o scrollview e deixar so a lista com setHeader-->
 
             <ListView
                 android:id="@+id/seasonEpisodesList"
                 android:layout_height="wrap_content"
+                android:background="#FFFFFF"
                 android:layout_width="match_parent"
                 android:dividerHeight="@dimen/default_list_view_divider_height"
-
+                android:divider="@color/default_background_season"
                 >
             </ListView>
-
-
-
-        </ScrollView>
-
     </LinearLayout>
 
 

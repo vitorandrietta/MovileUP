@@ -1,7 +1,6 @@
 package com.movile.up.seriestracker.activities;
 
 import android.content.Intent;
-import android.media.Image;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -14,25 +13,33 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.movile.up.seriestracker.R;
-import com.movile.up.seriestracker.business.holders.EpisodeListItemHolder;
 import com.movile.up.seriestracker.business.listadapters.EpisodeListAdapter;
+import com.movile.up.seriestracker.business.presenters.SeasonDetailsPresenter;
 import com.movile.up.seriestracker.interfaces.view.SeasonDetailsView;
 import com.movile.up.seriestracker.model.models.Episode;
 import com.movile.up.seriestracker.model.models.Season;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class SeasonDetailsActivity extends ActionBarActivity implements SeasonDetailsView {
 
     private ListView episodeList;
+    private EpisodeListAdapter episodeListAdapter;
+    private SeasonDetailsPresenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_season_details);
         episodeList = (ListView) findViewById(R.id.seasonEpisodesList);
+        View header = getLayoutInflater().inflate(R.layout.season_header_layout,null);
+        episodeList.addHeaderView(header);
+        presenter = new SeasonDetailsPresenter(this,this);
+        episodeListAdapter = new EpisodeListAdapter(this,R.layout.episode_list_item_view,this);
+        this.episodeList.setAdapter(episodeListAdapter);
+        presenter.presentSeason("breaking-bad",1L);
 
     }
 
@@ -75,29 +82,13 @@ public class SeasonDetailsActivity extends ActionBarActivity implements SeasonDe
         TextView rating = (TextView) findViewById(R.id.seasonRating);
         rating.setText(Double.toString(season.rating()));
 
-        ArrayList<String> episodeTitles = new ArrayList<String>();
-        for (Episode episode:season.episodes()){
-            episodeTitles.add(episode.title());
-        }
-        EpisodeListAdapter adapter = new EpisodeListAdapter(this,R.layout.episode_list_item_view,this,episodeTitles);
-        this.episodeList.setAdapter(adapter);
-        this.episodeList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
-                Intent intent = new Intent();
-
-            }
-        });
     }
 
     @Override
-    public void displaySeasonEpisodes(EpisodeListItemHolder holder, ArrayList<String> episodeDetails, int pos) {
-        String episodeNumber = "E".concat(Integer.toString(pos));
-        holder.getEpisodeNumber().setText(episodeNumber);
-
-        String episodeTitle = episodeDetails.get(pos);
-        holder.getEpisodeTitle().setText(episodeTitle);
+    public void displaySeasonEpisodes(List<Episode> episodeDetails) {
+        this.episodeListAdapter.notifyListChanged(episodeDetails);
     }
+
 
 }

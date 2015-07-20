@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.os.PersistableBundle;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -59,6 +60,8 @@ public class EpisodeDetailsActivity extends Activity implements EpisodeDetailsVi
         //        getLoaderManager().initLoader(
         //              0, null, new EpisodeLoaderCallback(this,this)
         //    ).forceLoad();
+
+
         presenter = new EpisodeDetailsPresenter(this,this);
         presenter.presentEpisode("breaking-bad",2L,3L);
     }

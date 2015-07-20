@@ -5,7 +5,10 @@ import android.content.Context;
 import com.movile.up.seriestracker.business.restclients.SeasonRestClient;
 import com.movile.up.seriestracker.interfaces.callback.SeasonPresenter;
 import com.movile.up.seriestracker.interfaces.view.SeasonDetailsView;
+import com.movile.up.seriestracker.model.models.Episode;
 import com.movile.up.seriestracker.model.models.Season;
+
+import java.util.List;
 
 /**
  * Created by root on 19/07/15.
@@ -29,8 +32,16 @@ public class SeasonDetailsPresenter implements SeasonPresenter {
         this.mView.displaySeasonDetails(season);
      }
 
+
+
     @Override
     public void presentSeason(String show, Long season) {
-        client.processSeason(show,season,this,context);
+        //client.processSeason(show,season,this,context);
+        client.processSeasonEpisodes(show,season,this,context);
+    }
+
+    @Override
+    public void onSeasonEpisodesCallback(List<Episode> episodes) {
+        this.mView.displaySeasonEpisodes(episodes);
     }
 }

@@ -7,4 +7,5 @@ import android.content.Context;
  */
 public interface SeasonClient {
     public void processSeason(String show,long season,SeasonPresenter presenter,Context context);
+    public void processSeasonEpisodes(String show,long season,SeasonPresenter presenter,Context context);
 }
