@@ -23,7 +23,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 
+
+
 public class SeasonDetailsActivity extends ActionBarActivity implements SeasonDetailsView {
+
+    public static final String SHOW ="SHOW";
+    public static final String SEASON ="SEASON";
+    public static final String EPISODE ="EPISODE";
 
     private ListView episodeList;
     private EpisodeListAdapter episodeListAdapter;
@@ -39,7 +45,18 @@ public class SeasonDetailsActivity extends ActionBarActivity implements SeasonDe
         presenter = new SeasonDetailsPresenter(this,this);
         episodeListAdapter = new EpisodeListAdapter(this,R.layout.episode_list_item_view,this);
         this.episodeList.setAdapter(episodeListAdapter);
-        presenter.presentSeason("breaking-bad",1L);
+        presenter.presentSeason("breaking-bad", 3L);
+        //setar season e serie aqui
+        this.episodeList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent intent = new Intent(SeasonDetailsActivity.this,EpisodeDetailsActivity.class);
+                intent.putExtra(SHOW,"breaking-bad");
+                intent.putExtra(SEASON,3L);
+                intent.putExtra(EPISODE,l+1L);
+                startActivity(intent);
+          }
+        });
 
     }
 
@@ -69,18 +86,19 @@ public class SeasonDetailsActivity extends ActionBarActivity implements SeasonDe
     public void displaySeasonDetails(Season season) {
         ImageView seasonImage = (ImageView) findViewById(R.id.seasonImage);
 
-        Glide.with(this).
-            load(season.images().poster().get("full")).
-                into(seasonImage);
+        //Glide.with(this).
+          //  load(season.images().poster().get("full")).
+            //    into(seasonImage);
 
         ImageView seasonThumbnail = (ImageView) findViewById(R.id.seasonThumbnail);;
 
         Glide.with(this).
-                load(season.images().poster().get("full")).
-                into(seasonThumbnail);
+               load(season.images().poster().get("full")).
+              into(seasonThumbnail);
 
         TextView rating = (TextView) findViewById(R.id.seasonRating);
-        rating.setText(Double.toString(season.rating()));
+        rating.setText(String.format("%.1f",season.rating()));
+
 
 
     }

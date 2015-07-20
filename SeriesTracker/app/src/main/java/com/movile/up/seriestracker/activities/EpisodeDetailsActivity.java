@@ -1,6 +1,7 @@
 package com.movile.up.seriestracker.activities;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.PersistableBundle;
 import android.os.Bundle;
 import android.util.Log;
@@ -61,9 +62,13 @@ public class EpisodeDetailsActivity extends Activity implements EpisodeDetailsVi
         //              0, null, new EpisodeLoaderCallback(this,this)
         //    ).forceLoad();
 
+        Intent intent = getIntent();
+        String show = intent.getStringExtra(SeasonDetailsActivity.SHOW);
+        Long season = intent.getLongExtra(SeasonDetailsActivity.SEASON,0L);
+        Long episodes = intent.getLongExtra(SeasonDetailsActivity.EPISODE,0L);
 
         presenter = new EpisodeDetailsPresenter(this,this);
-        presenter.presentEpisode("breaking-bad",2L,3L);
+        presenter.presentEpisode(show,season,episodes);
     }
 
     @Override

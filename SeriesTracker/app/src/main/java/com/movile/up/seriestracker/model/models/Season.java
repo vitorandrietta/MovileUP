@@ -15,6 +15,9 @@ public class Season {
     private String overview;
     private Images images;
 
+    public Season() {
+    }
+
     public Long number() {
         return number;
     }

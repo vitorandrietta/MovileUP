@@ -5,7 +5,9 @@
     <RelativeLayout
         android:id="@+id/seasonHeader"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/default_season_header_height">
+        android:layout_height="@dimen/default_season_header_height"
+        android:background="@color/default_background_first"
+        >
         <ImageView
             android:id="@+id/seasonImage"
             android:layout_width="match_parent"

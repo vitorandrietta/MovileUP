@@ -17,23 +17,25 @@
     </View>
     <TextView
         android:layout_width="30dp"
-        android:layout_height="16dp"
+        android:layout_height="wrap_content"
         android:gravity="center"
         android:layout_gravity="center"
         android:textSize="14sp"
         android:textColor="@color/default_textColor_first"
         android:id="@+id/episodeNumberText"
+        android:fontFamily="Roboto-Medium"
         >
     </TextView>
     </FrameLayout>
     <TextView
         android:layout_width="248dp"
-        android:layout_height="18dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="19dp"
         android:layout_marginLeft="16dp"
         android:textSize="16sp"
         android:textColor="@color/default_textColor_fourth"
         android:id="@+id/episodeTitle"
+        android:fontFamily="Roboto-Regular"
         />
 
 </LinearLayout>

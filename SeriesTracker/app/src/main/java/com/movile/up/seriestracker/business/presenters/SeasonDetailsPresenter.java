@@ -36,8 +36,8 @@ public class SeasonDetailsPresenter implements SeasonPresenter {
 
     @Override
     public void presentSeason(String show, Long season) {
-        //client.processSeason(show,season,this,context);
         client.processSeasonEpisodes(show,season,this,context);
+        client.processSeason(show,season,this,this.context);
     }
 
     @Override

@@ -89,7 +89,7 @@ public class EpisodeListAdapter extends ArrayAdapter<Episode> {
     private void populateViewFromHolder(EpisodeListItemHolder holder, int position) {
         if(this.episodes.isEmpty())
             return;
-        holder.getEpisodeNumber().setText("E".concat(Integer.toString(position)));
+        holder.getEpisodeNumber().setText("E".concat(Integer.toString(position+1)));
         holder.getEpisodeTitle().setText(episodes.get(position).title());
 
     }
