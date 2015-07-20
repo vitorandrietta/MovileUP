@@ -3,7 +3,7 @@ package com.movile.up.seriestracker.model.models;
 import com.google.gson.annotations.SerializedName;
 
 public class Season {
-
+    private  Episode[] episodes;
     private Long number;
     private MediaIds ids;
     private Double rating;
@@ -47,4 +47,5 @@ public class Season {
         return images;
     }
 
+    public Episode[] episodes(){return  episodes;}
 }

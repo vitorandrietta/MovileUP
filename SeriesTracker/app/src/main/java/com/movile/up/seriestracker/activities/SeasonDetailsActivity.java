@@ -1,10 +1,13 @@
 package com.movile.up.seriestracker.activities;
 
+import android.content.Intent;
 import android.media.Image;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -12,19 +15,25 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.movile.up.seriestracker.R;
 import com.movile.up.seriestracker.business.holders.EpisodeListItemHolder;
+import com.movile.up.seriestracker.business.listadapters.EpisodeListAdapter;
 import com.movile.up.seriestracker.interfaces.view.SeasonDetailsView;
+import com.movile.up.seriestracker.model.models.Episode;
 import com.movile.up.seriestracker.model.models.Season;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 
 public class SeasonDetailsActivity extends ActionBarActivity implements SeasonDetailsView {
 
+    private ListView episodeList;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_season_details);
-        ListView view = (ListView) findViewById(R.id.seasonEpisodesList);
+        episodeList = (ListView) findViewById(R.id.seasonEpisodesList);
+
     }
 
     @Override
@@ -66,6 +75,20 @@ public class SeasonDetailsActivity extends ActionBarActivity implements SeasonDe
         TextView rating = (TextView) findViewById(R.id.seasonRating);
         rating.setText(Double.toString(season.rating()));
 
+        ArrayList<String> episodeTitles = new ArrayList<String>();
+        for (Episode episode:season.episodes()){
+            episodeTitles.add(episode.title());
+        }
+        EpisodeListAdapter adapter = new EpisodeListAdapter(this,R.layout.episode_list_item_view,this,episodeTitles);
+        this.episodeList.setAdapter(adapter);
+        this.episodeList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                Intent intent = new Intent();
+
+            }
+        });
     }
 
     @Override

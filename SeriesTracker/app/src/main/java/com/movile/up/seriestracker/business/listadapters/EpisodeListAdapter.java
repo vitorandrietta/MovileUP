@@ -22,10 +22,11 @@ public class EpisodeListAdapter extends ArrayAdapter<String> {
     private ArrayList<String> episodeTitles;
     private  SeasonDetailsView seasonView;
 
-    public EpisodeListAdapter(Context context, int resource, SeasonDetailsView seasonView) {
+    public EpisodeListAdapter(Context context, int resource, SeasonDetailsView seasonView,ArrayList<String> episodeTitleList) {
         super(context, resource);
         this.context = context;
         this.seasonView = seasonView;
+        this.episodeTitles = episodeTitleList;
     }
 
     @Override
