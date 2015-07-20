@@ -13,7 +13,11 @@
 
 
     <style name="AppTheme.EpisodeDetails.Card.Container" parent="CardView">
-        <item name="cardCornerRadius">2dp</item>
+        <item name="cardCornerRadius">4dp</item>
+    </style>
+
+    <style name="AppTheme.Season.Card.Container" parent="CardView">
+        <item name="cardCornerRadius">4dp</item>
     </style>
 
 </resources>

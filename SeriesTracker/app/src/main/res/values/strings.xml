@@ -8,7 +8,7 @@
     <string name="summary">SUMMARY</string>
     <string name="clockDescription">clock image</string>
     <string name="title_activity_season_details">SeasonDetailsActivity</string>
-
+    <string name="episodes">Episodes</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     @string/episodeTime

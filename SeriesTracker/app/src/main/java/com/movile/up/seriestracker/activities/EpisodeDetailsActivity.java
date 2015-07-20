@@ -11,6 +11,7 @@ import com.bumptech.glide.Glide;
 import com.movile.up.seriestracker.R;
 import com.movile.up.seriestracker.business.presenters.EpisodeDetailsPresenter;
 import com.movile.up.seriestracker.business.restclients.EpisodeRestClient;
+import com.movile.up.seriestracker.interfaces.callback.EpisodePresenter;
 import com.movile.up.seriestracker.interfaces.view.EpisodeDetailsView;
 import com.movile.up.seriestracker.model.models.Episode;
 
@@ -22,7 +23,7 @@ public class EpisodeDetailsActivity extends Activity implements EpisodeDetailsVi
 
     private static final String TAG = EpisodeDetailsActivity.class.getSimpleName();
     private String estadoSalvo;
-
+    private EpisodePresenter presenter;
     /*@Override
     public void onOperationSuccess(Episode result) {
         SimpleDateFormat utcToDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
@@ -58,9 +59,8 @@ public class EpisodeDetailsActivity extends Activity implements EpisodeDetailsVi
         //        getLoaderManager().initLoader(
         //              0, null, new EpisodeLoaderCallback(this,this)
         //    ).forceLoad();
-        EpisodeDetailsPresenter episodePresenter = new EpisodeDetailsPresenter(this);
-        EpisodeRestClient.processSpecificEpisode("breaking-bad","2","4",episodePresenter,this);
-
+        presenter = new EpisodeDetailsPresenter(this,this);
+        presenter.presentEpisode("breaking-bad",2L,3L);
     }
 
     @Override

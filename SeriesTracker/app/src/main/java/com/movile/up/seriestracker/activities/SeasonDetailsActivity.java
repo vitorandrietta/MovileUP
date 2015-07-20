@@ -1,19 +1,30 @@
 package com.movile.up.seriestracker.activities;
 
+import android.media.Image;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.movile.up.seriestracker.R;
+import com.movile.up.seriestracker.business.holders.EpisodeListItemHolder;
+import com.movile.up.seriestracker.interfaces.view.SeasonDetailsView;
+import com.movile.up.seriestracker.model.models.Season;
+
+import java.util.ArrayList;
 
 
-public class SeasonDetailsActivity extends ActionBarActivity {
+public class SeasonDetailsActivity extends ActionBarActivity implements SeasonDetailsView {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_season_details);
+        ListView view = (ListView) findViewById(R.id.seasonEpisodesList);
     }
 
     @Override
@@ -37,4 +48,33 @@ public class SeasonDetailsActivity extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+    @Override
+    public void displaySeasonDetails(Season season) {
+        ImageView seasonImage = (ImageView) findViewById(R.id.seasonImage);
+
+        Glide.with(this).
+            load(season.images().poster().get("full")).
+                into(seasonImage);
+
+        ImageView seasonThumbnail = (ImageView) findViewById(R.id.seasonThumbnail);;
+
+        Glide.with(this).
+                load(season.images().poster().get("full")).
+                into(seasonThumbnail);
+
+        TextView rating = (TextView) findViewById(R.id.seasonRating);
+        rating.setText(Double.toString(season.rating()));
+
+    }
+
+    @Override
+    public void displaySeasonEpisodes(EpisodeListItemHolder holder, ArrayList<String> episodeDetails, int pos) {
+        String episodeNumber = "E".concat(Integer.toString(pos));
+        holder.getEpisodeNumber().setText(episodeNumber);
+
+        String episodeTitle = episodeDetails.get(pos);
+        holder.getEpisodeTitle().setText(episodeTitle);
+    }
+
 }
