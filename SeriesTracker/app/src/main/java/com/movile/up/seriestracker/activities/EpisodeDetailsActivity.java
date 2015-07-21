@@ -21,52 +21,24 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 
-public class EpisodeDetailsActivity extends Activity implements EpisodeDetailsView {
+public class EpisodeDetailsActivity extends BaseNavigationToolbarActivity implements EpisodeDetailsView {
 
     private static final String TAG = EpisodeDetailsActivity.class.getSimpleName();
     private String estadoSalvo;
     private EpisodePresenter presenter;
-    /*@Override
-    public void onOperationSuccess(Episode result) {
-        SimpleDateFormat utcToDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
-        Date episodeDate = null;
-        String episodeFormatedBeginTime=null;
-        try {
-            episodeDate = utcToDateFormat.parse(result.firstAired());
-            episodeFormatedBeginTime = new SimpleDateFormat("yyyy/MM/dd 'at' HH:mm").format(episodeDate);
-        } catch (Exception e) {
-            e.printStackTrace();
-            Log.d(TAG, "Error converting episode begining time to datetime");
-        }
-
-        TextView episodeDescriptionText = (TextView) findViewById(R.id.episodeDescription);
-        TextView episodeTitleText = (TextView) findViewById(R.id.episodeTitle);
-        TextView episodeBeginTimeText = (TextView) findViewById(R.id.episodeBeginTime);
-        episodeDescriptionText.setText(result.overview());
-        episodeTitleText.setText(result.title());
-        episodeBeginTimeText.setText(episodeFormatedBeginTime);
-
-        String episodeImageUrl = result.images().screenshot().get("full");
-        //new RemoteImageAsyncTask(this).execute(episodeImageUrl);
-        ImageView episodeImage = (ImageView)findViewById(R.id.episodeImage);
-        Glide.with(this)
-                .load(episodeImageUrl)
-                .into(episodeImage);
-    }*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_episode_details);
-        //        getLoaderManager().initLoader(
-        //              0, null, new EpisodeLoaderCallback(this,this)
-        //    ).forceLoad();
-
+        this.configureToolbar();
+        this.showLoading();
         Intent intent = getIntent();
         String show = intent.getStringExtra(SeasonDetailsActivity.SHOW);
-        Long season = intent.getLongExtra(SeasonDetailsActivity.SEASON,0L);
+        Long season = intent.getLongExtra(SeasonDetailsActivity.SEASON, 0L);
         Long episodes = intent.getLongExtra(SeasonDetailsActivity.EPISODE,0L);
-
+        String actionBarTitle = ("S").concat(season.toString()).concat(" E".concat(episodes.toString()));
+        getSupportActionBar().setTitle(actionBarTitle);
         presenter = new EpisodeDetailsPresenter(this,this);
         presenter.presentEpisode(show,season,episodes);
     }
@@ -128,11 +100,6 @@ public class EpisodeDetailsActivity extends Activity implements EpisodeDetailsVi
 
     }
 
-    /*@Override
-    public void LoadImage(Bitmap image) {
-        ImageView episodeImage = (ImageView)findViewById(R.id.episodeImage);
-        episodeImage.setImageBitmap(image);
-    }*/
 
     @Override
     public void displayEpisode(Episode episode) {
@@ -157,9 +124,11 @@ public class EpisodeDetailsActivity extends Activity implements EpisodeDetailsVi
 
         String episodeImageUrl = episode.images().screenshot().get("full");
         //new RemoteImageAsyncTask(this).execute(episodeImageUrl);
+
         ImageView episodeImage = (ImageView)findViewById(R.id.episodeImage);
         Glide.with(this)
                 .load(episodeImageUrl)
                 .into(episodeImage);
+        this.hideLoading();
     }
 }

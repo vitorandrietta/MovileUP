@@ -25,7 +25,7 @@ import java.util.List;
 
 
 
-public class SeasonDetailsActivity extends ActionBarActivity implements SeasonDetailsView {
+public class SeasonDetailsActivity extends BaseNavigationToolbarActivity  implements SeasonDetailsView {
 
     public static final String SHOW ="SHOW";
     public static final String SEASON ="SEASON";
@@ -39,22 +39,27 @@ public class SeasonDetailsActivity extends ActionBarActivity implements SeasonDe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_season_details);
+        this.showLoading();
+        this.configureToolbar();
         episodeList = (ListView) findViewById(R.id.seasonEpisodesList);
         View header = getLayoutInflater().inflate(R.layout.season_header_layout,null);
         episodeList.addHeaderView(header);
         presenter = new SeasonDetailsPresenter(this,this);
         episodeListAdapter = new EpisodeListAdapter(this,R.layout.episode_list_item_view,this);
         this.episodeList.setAdapter(episodeListAdapter);
-        presenter.presentSeason("breaking-bad", 3L);
+        presenter.presentSeason("game-of-thrones", 2L);
         //setar season e serie aqui
+        String actionBarTitle = "Game of thrones S2";
+        getSupportActionBar().setTitle(actionBarTitle);
         this.episodeList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Intent intent = new Intent(SeasonDetailsActivity.this,EpisodeDetailsActivity.class);
-                intent.putExtra(SHOW,"breaking-bad");
-                intent.putExtra(SEASON,3L);
-                intent.putExtra(EPISODE,l+1L);
+                intent.putExtra(SHOW,"game-of-thrones");
+                intent.putExtra(SEASON,2L);
+                intent.putExtra(EPISODE, l + 1L);
                 startActivity(intent);
+
           }
         });
 
@@ -86,18 +91,22 @@ public class SeasonDetailsActivity extends ActionBarActivity implements SeasonDe
     public void displaySeasonDetails(Season season) {
         ImageView seasonImage = (ImageView) findViewById(R.id.seasonImage);
 
-        //Glide.with(this).
-          //  load(season.images().poster().get("full")).
-            //    into(seasonImage);
+        Glide
+                .with(this).
+                load(season.images().poster().get("full")).centerCrop().
+                into(seasonImage);
 
         ImageView seasonThumbnail = (ImageView) findViewById(R.id.seasonThumbnail);;
 
         Glide.with(this).
-               load(season.images().poster().get("full")).
-              into(seasonThumbnail);
+               load(season.images().thumb().get("full")).
+                centerCrop().
+               into(seasonThumbnail);
 
         TextView rating = (TextView) findViewById(R.id.seasonRating);
         rating.setText(String.format("%.1f",season.rating()));
+        this.hideLoading();
+        // put the click listener in the interface
 
 
 

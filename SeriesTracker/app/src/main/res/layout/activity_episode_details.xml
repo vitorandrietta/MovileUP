@@ -39,7 +39,6 @@
                 android:layout_alignBottom="@id/episodeImage"
                 android:layout_marginBottom="@dimen/default_episode_name_margin"
                 android:layout_marginLeft="@dimen/default_episode_name_margin"
-                android:text="@string/default_espisode_name"
                 android:textColor="@color/default_textColor_first"
                 android:textSize="@dimen/default_textSize_veryLarge" />
 
@@ -78,7 +77,6 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/default_episode_time_left_margin"
                     android:layout_marginTop="@dimen/default_episode_time_top_margin"
-                    android:text="@string/episodeTime"
                     android:textColor="@color/default_color_first"
                     android:textSize="@dimen/default_textSize_medium"
                     android:id="@+id/episodeBeginTime"
@@ -129,7 +127,6 @@
                     android:layout_marginBottom="@dimen/default_episode_description_margin_bottom"
                     android:layout_marginRight="@dimen/default_spacing_large"
                     android:layout_marginTop="@dimen/default_episode_description_margin_top"
-                    android:text="@string/episodeDescription"
                     android:textColor="@color/default_textColor_fourth"
                     android:textSize="@dimen/default_textSize_medium" />
             </LinearLayout>
