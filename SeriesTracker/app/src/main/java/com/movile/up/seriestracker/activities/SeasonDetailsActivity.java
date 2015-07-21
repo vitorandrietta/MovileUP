@@ -1,7 +1,6 @@
 package com.movile.up.seriestracker.activities;
 
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -15,17 +14,17 @@ import com.bumptech.glide.Glide;
 import com.movile.up.seriestracker.R;
 import com.movile.up.seriestracker.business.listadapters.EpisodeListAdapter;
 import com.movile.up.seriestracker.business.presenters.SeasonDetailsPresenter;
+import com.movile.up.seriestracker.interfaces.callback.EpisodeItemListClickListener;
 import com.movile.up.seriestracker.interfaces.view.SeasonDetailsView;
 import com.movile.up.seriestracker.model.models.Episode;
 import com.movile.up.seriestracker.model.models.Season;
 
-import java.util.ArrayList;
 import java.util.List;
 
 
 
 
-public class SeasonDetailsActivity extends BaseNavigationToolbarActivity  implements SeasonDetailsView {
+public class SeasonDetailsActivity extends BaseNavigationToolbarActivity  implements SeasonDetailsView, EpisodeItemListClickListener {
 
     public static final String SHOW ="SHOW";
     public static final String SEASON ="SEASON";
@@ -54,12 +53,7 @@ public class SeasonDetailsActivity extends BaseNavigationToolbarActivity  implem
         this.episodeList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Intent intent = new Intent(SeasonDetailsActivity.this,EpisodeDetailsActivity.class);
-                intent.putExtra(SHOW,"game-of-thrones");
-                intent.putExtra(SEASON,2L);
-                intent.putExtra(EPISODE, l + 1L);
-                startActivity(intent);
-
+                SeasonDetailsActivity.this.performItemClickAction(l);
           }
         });
 
@@ -74,9 +68,7 @@ public class SeasonDetailsActivity extends BaseNavigationToolbarActivity  implem
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
+
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
@@ -106,10 +98,6 @@ public class SeasonDetailsActivity extends BaseNavigationToolbarActivity  implem
         TextView rating = (TextView) findViewById(R.id.seasonRating);
         rating.setText(String.format("%.1f",season.rating()));
         this.hideLoading();
-        // put the click listener in the interface
-
-
-
     }
 
     @Override
@@ -118,4 +106,13 @@ public class SeasonDetailsActivity extends BaseNavigationToolbarActivity  implem
     }
 
 
+    @Override
+    public void performItemClickAction(long episode) {
+        Intent intent = new Intent(SeasonDetailsActivity.this,EpisodeDetailsActivity.class);
+        intent.putExtra(SHOW,"game-of-thrones");
+        intent.putExtra(SEASON,2L);
+        intent.putExtra(EPISODE, episode + 1L);
+        startActivity(intent);
+
+    }
 }

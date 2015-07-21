@@ -13,7 +13,7 @@
             <ListView
                 android:id="@+id/seasonEpisodesList"
                 android:layout_height="wrap_content"
-                android:background="#FFFFFF"
+                android:background="@color/default_textColor_first"
                 android:layout_width="match_parent"
                 android:dividerHeight="@dimen/default_list_view_divider_height"
                 android:divider="@color/default_background_season"

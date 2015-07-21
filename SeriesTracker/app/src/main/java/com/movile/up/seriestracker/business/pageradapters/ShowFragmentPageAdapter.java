@@ -1,10 +1,8 @@
-package com.movile.up.seriestracker.business.pageviewadapters;
+package com.movile.up.seriestracker.business.pageradapters;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.view.PagerAdapter;
-import android.view.View;
 
 import com.movile.up.seriestracker.fragments.ShowInformationFragment;
 import com.movile.up.seriestracker.fragments.ShowSeasonsFragment;
@@ -14,6 +12,8 @@ import com.movile.up.seriestracker.fragments.ShowSeasonsFragment;
  */
 public class ShowFragmentPageAdapter extends FragmentPagerAdapter {
 
+    public static final int INFO_OPTION=0;
+    public static final int SEASONS_OPTION=0;
 
     public ShowFragmentPageAdapter(FragmentManager fm) {
         super(fm);
@@ -21,7 +21,7 @@ public class ShowFragmentPageAdapter extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        //trocar para constante
+
         if(position==0){
             return new ShowInformationFragment();
         }
@@ -40,7 +40,7 @@ public class ShowFragmentPageAdapter extends FragmentPagerAdapter {
 
     @Override
     public CharSequence getPageTitle(int position) {
-        if(position ==1 ){
+        if(position ==INFO_OPTION ){
             return "INFO";
         }
         else{

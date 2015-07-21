@@ -1,16 +1,13 @@
 package com.movile.up.seriestracker.activities;
 
-import android.app.Activity;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 
 import com.movile.up.seriestracker.R;
-import com.movile.up.seriestracker.business.pageviewadapters.ShowFragmentPageAdapter;
+import com.movile.up.seriestracker.business.pageradapters.ShowFragmentPageAdapter;
 
 
 public class ShowDetailsActivity extends AppCompatActivity{
@@ -26,7 +23,7 @@ public class ShowDetailsActivity extends AppCompatActivity{
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
+
         getMenuInflater().inflate(R.menu.menu_show_details, menu);
 
         return true;
@@ -34,9 +31,7 @@ public class ShowDetailsActivity extends AppCompatActivity{
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
+
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
