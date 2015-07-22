@@ -3,8 +3,7 @@ package com.movile.up.seriestracker.business.presenters;
 import android.content.Context;
 
 import com.movile.up.seriestracker.business.restclients.EpisodeRestClient;
-import com.movile.up.seriestracker.interfaces.callback.EpisodeClient;
-import com.movile.up.seriestracker.interfaces.callback.EpisodePresenter;
+import com.movile.up.seriestracker.interfaces.callback.restClient.EpisodePresenter;
 import com.movile.up.seriestracker.interfaces.view.EpisodeDetailsView;
 import com.movile.up.seriestracker.model.models.Episode;
 

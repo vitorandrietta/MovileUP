@@ -4,9 +4,8 @@ import android.content.Context;
 import android.util.Log;
 
 import com.movile.up.seriestracker.R;
-import com.movile.up.seriestracker.interfaces.callback.SeasonClient;
-import com.movile.up.seriestracker.interfaces.callback.SeasonPresenter;
-import com.movile.up.seriestracker.interfaces.rest.EpisodeRemoteService;
+import com.movile.up.seriestracker.interfaces.callback.restClient.SeasonClient;
+import com.movile.up.seriestracker.interfaces.callback.restClient.SeasonPresenter;
 import com.movile.up.seriestracker.interfaces.rest.SeasonRemoteService;
 import com.movile.up.seriestracker.model.models.Episode;
 import com.movile.up.seriestracker.model.models.Season;

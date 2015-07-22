@@ -44,6 +44,12 @@
     <dimen name="base_navigation_toolbar_minHeight">@dimen/base_navigation_toolbar_height</dimen>
     <!-- Base Loading -->
     <dimen name="base_loading_progress_size">48dp</dimen>
+    <dimen name="default_card_show_rating_margin_left">32dp</dimen>
+    <dimen name="default_show_favorite_button_margin_left">288dp</dimen>
+    <dimen name="default_show_favorite_button_margin_top">175dp</dimen>
+    <dimen name="default_episode_title_circle">40dp</dimen>
+    <dimen name="default_extra_large_spacement">296dp</dimen>
+    <dimen name="default_large_spacement">264dp</dimen>
 
 
     <!--292dp-->

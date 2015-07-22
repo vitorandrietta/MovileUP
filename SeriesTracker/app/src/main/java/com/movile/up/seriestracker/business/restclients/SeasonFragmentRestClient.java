@@ -4,8 +4,8 @@ import android.content.Context;
 import android.util.Log;
 
 import com.movile.up.seriestracker.R;
-import com.movile.up.seriestracker.interfaces.callback.FragmentSeasonPresenter;
-import com.movile.up.seriestracker.interfaces.callback.SeasonFragmentClient;
+import com.movile.up.seriestracker.interfaces.callback.restClient.FragmentSeasonPresenter;
+import com.movile.up.seriestracker.interfaces.callback.restClient.SeasonFragmentClient;
 import com.movile.up.seriestracker.interfaces.rest.SeasonRemoteService;
 import com.movile.up.seriestracker.model.models.Season;
 

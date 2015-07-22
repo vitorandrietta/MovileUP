@@ -1,4 +1,4 @@
-package com.movile.up.seriestracker.business.listadapters;
+package com.movile.up.seriestracker.business.adapters.listadapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -11,7 +11,6 @@ import com.movile.up.seriestracker.R;
 import com.movile.up.seriestracker.interfaces.view.SeasonDetailsView;
 import com.movile.up.seriestracker.model.models.Episode;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**

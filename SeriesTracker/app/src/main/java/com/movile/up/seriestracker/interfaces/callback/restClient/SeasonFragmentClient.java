@@ -1,10 +1,6 @@
-package com.movile.up.seriestracker.interfaces.callback;
+package com.movile.up.seriestracker.interfaces.callback.restClient;
 
 import android.content.Context;
-
-import com.movile.up.seriestracker.model.models.Season;
-
-import java.util.List;
 
 /**
  * Created by android on 7/22/15.

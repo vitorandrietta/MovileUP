@@ -1,4 +1,4 @@
-package com.movile.up.seriestracker.interfaces.callback;
+package com.movile.up.seriestracker.interfaces.callback.restClient;
 
 import android.content.Context;
 

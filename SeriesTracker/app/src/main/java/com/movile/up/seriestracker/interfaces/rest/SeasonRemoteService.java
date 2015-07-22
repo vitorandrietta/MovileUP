@@ -19,7 +19,8 @@ public interface SeasonRemoteService {
 
             "trakt-api-version: "+ ApiConfiguration.API_VERSION,
             "trakt-api-key: " + ApiConfiguration.API_KEY
-    })
+
+            })
     @GET("/shows/{show}/seasons/{season}?extended=full,images")
     void getSeasonEpisodes(
             @Path("show") String show,
@@ -31,3 +32,4 @@ public interface SeasonRemoteService {
             @Path("show") String show,
             Callback<List<Season>> callback);
 }
+

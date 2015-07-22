@@ -1,19 +1,18 @@
 package com.movile.up.seriestracker.activities;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.PersistableBundle;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.movile.up.seriestracker.R;
 import com.movile.up.seriestracker.business.presenters.EpisodeDetailsPresenter;
-import com.movile.up.seriestracker.business.restclients.EpisodeRestClient;
-import com.movile.up.seriestracker.interfaces.callback.EpisodePresenter;
+import com.movile.up.seriestracker.configuration.ImageTypes;
+import com.movile.up.seriestracker.configuration.InformationKeys;
+import com.movile.up.seriestracker.interfaces.callback.restClient.EpisodePresenter;
 import com.movile.up.seriestracker.interfaces.view.EpisodeDetailsView;
 import com.movile.up.seriestracker.model.models.Episode;
 
@@ -34,71 +33,15 @@ public class EpisodeDetailsActivity extends BaseNavigationToolbarActivity implem
         this.configureToolbar();
         this.showLoading();
         Intent intent = getIntent();
-        String show = intent.getStringExtra(SeasonDetailsActivity.SHOW);
-        Long season = intent.getLongExtra(SeasonDetailsActivity.SEASON, 0L);
-        Long episodes = intent.getLongExtra(SeasonDetailsActivity.EPISODE,0L);
+        String show = intent.getStringExtra(InformationKeys.SHOW);
+        Long season = intent.getLongExtra(InformationKeys.SEASON, 0L);
+        Long episodes = intent.getLongExtra(InformationKeys.EPISODE,0L);
         String actionBarTitle = ("S").concat(season.toString()).concat(" E".concat(episodes.toString()));
         getSupportActionBar().setTitle(actionBarTitle);
         presenter = new EpisodeDetailsPresenter(this,this);
-        presenter.presentEpisode(show,season,episodes);
+        presenter.presentEpisode(show, season, episodes);
     }
 
-    @Override
-    protected void onRestoreInstanceState(Bundle savedInstanceState) {
-        super.onRestoreInstanceState(savedInstanceState);
-        String msg = savedInstanceState.getString("estadoSalvo");
-
-        Log.d(TAG, msg);
-
-    }
-
-    @Override
-    public void onSaveInstanceState(Bundle savedInstanceState) {
-        savedInstanceState.putString("estadoSalvo", "passei aqui");
-        super.onSaveInstanceState(savedInstanceState);
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        Log.d(TAG, "Stop");
-        this.estadoSalvo = "passei por aqui";
-
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        Log.d(TAG, "Resume");
-
-    }
-
-    @Override
-    protected void onRestart() {
-        super.onRestart();
-        Log.d(TAG, "Restart");
-
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        Log.d(TAG, "Destroy");
-        this.estadoSalvo = "passei por aqui";
-
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState, PersistableBundle peristentState) {
-        super.onCreate(savedInstanceState, peristentState);
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        this.estadoSalvo = "passei por aqui";
-
-    }
 
 
     @Override
@@ -122,8 +65,8 @@ public class EpisodeDetailsActivity extends BaseNavigationToolbarActivity implem
         episodeTitleText.setText(episode.title());
         episodeBeginTimeText.setText(episodeFormatedBeginTime);
 
-        String episodeImageUrl = episode.images().screenshot().get("full");
-        //new RemoteImageAsyncTask(this).execute(episodeImageUrl);
+        String episodeImageUrl = episode.images().screenshot().get(ImageTypes.IMAGE_FULL);
+
 
         ImageView episodeImage = (ImageView)findViewById(R.id.episodeImage);
         Glide.with(this)

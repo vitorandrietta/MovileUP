@@ -1,4 +1,4 @@
-package com.movile.up.seriestracker.interfaces.callback;
+package com.movile.up.seriestracker.interfaces.view;
 
 /**
  * Created by root on 21/07/15.

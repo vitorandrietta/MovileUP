@@ -15,7 +15,8 @@
     <color name="default_background_third">#E5E5E5</color>
     <color name="default_background_fourth">#FF9800</color>
     <color name="default_background_season">#e1e1e1</color>
-
+    <color name="default_background_show_rating">#f57c00</color>
+    <color name="default_show_episodenumber">#a2a2a2</color>
     <!-- Theme -->
     <color name="theme_colorPrimary">@color/default_color_first</color>
     <color name="theme_colorPrimaryDark">@color/default_color_second</color>
@@ -27,6 +28,9 @@
     <color name="base_navigation_toolbar_transparent_background">#88333333</color>
     <!-- Base Loading -->
     <color name="base_loading_container_background">#99333333</color>
+
+
+
     
 
 

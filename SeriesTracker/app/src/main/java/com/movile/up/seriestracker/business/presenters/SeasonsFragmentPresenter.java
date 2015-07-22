@@ -3,8 +3,7 @@ package com.movile.up.seriestracker.business.presenters;
 import android.content.Context;
 
 import com.movile.up.seriestracker.business.restclients.SeasonFragmentRestClient;
-import com.movile.up.seriestracker.business.restclients.SeasonRestClient;
-import com.movile.up.seriestracker.interfaces.callback.FragmentSeasonPresenter;
+import com.movile.up.seriestracker.interfaces.callback.restClient.FragmentSeasonPresenter;
 import com.movile.up.seriestracker.interfaces.view.ShowSeasonsView;
 import com.movile.up.seriestracker.model.models.Season;
 

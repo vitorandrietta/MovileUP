@@ -12,9 +12,11 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.movile.up.seriestracker.R;
-import com.movile.up.seriestracker.business.listadapters.EpisodeListAdapter;
+import com.movile.up.seriestracker.business.adapters.listadapters.EpisodeListAdapter;
 import com.movile.up.seriestracker.business.presenters.SeasonDetailsPresenter;
-import com.movile.up.seriestracker.interfaces.callback.EpisodeItemListClickListener;
+import com.movile.up.seriestracker.configuration.ImageTypes;
+import com.movile.up.seriestracker.configuration.InformationKeys;
+import com.movile.up.seriestracker.interfaces.view.EpisodeItemListClickListener;
 import com.movile.up.seriestracker.interfaces.view.SeasonDetailsView;
 import com.movile.up.seriestracker.model.models.Episode;
 import com.movile.up.seriestracker.model.models.Season;
@@ -26,9 +28,7 @@ import java.util.List;
 
 public class SeasonDetailsActivity extends BaseNavigationToolbarActivity  implements SeasonDetailsView, EpisodeItemListClickListener {
 
-    public static final String SHOW ="SHOW";
-    public static final String SEASON ="SEASON";
-    public static final String EPISODE ="EPISODE";
+
 
     private ListView episodeList;
     private EpisodeListAdapter episodeListAdapter;
@@ -86,13 +86,13 @@ public class SeasonDetailsActivity extends BaseNavigationToolbarActivity  implem
 
         Glide
                 .with(this).
-                load(season.images().poster().get("full")).centerCrop().
+                load(season.images().poster().get(ImageTypes.IMAGE_FULL)).centerCrop().
                 into(seasonImage);
 
         ImageView seasonThumbnail = (ImageView) findViewById(R.id.seasonThumbnail);;
 
         Glide.with(this).
-               load(season.images().thumb().get("full")).
+               load(season.images().thumb().get(ImageTypes.IMAGE_FULL)).
                 centerCrop().
                into(seasonThumbnail);
 
@@ -115,9 +115,9 @@ public class SeasonDetailsActivity extends BaseNavigationToolbarActivity  implem
         }
 
         Intent intent = new Intent(SeasonDetailsActivity.this,EpisodeDetailsActivity.class);
-        intent.putExtra(SHOW,"game-of-thrones");
-        intent.putExtra(SEASON,2L);
-        intent.putExtra(EPISODE, episode + 1L);
+        intent.putExtra(InformationKeys.SHOW,"game-of-thrones");
+        intent.putExtra(InformationKeys.SEASON,2L);
+        intent.putExtra(InformationKeys.EPISODE, episode + 1L);
         startActivity(intent);
 
     }

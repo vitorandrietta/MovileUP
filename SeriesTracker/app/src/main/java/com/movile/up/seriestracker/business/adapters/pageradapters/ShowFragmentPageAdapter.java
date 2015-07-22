@@ -1,4 +1,4 @@
-package com.movile.up.seriestracker.business.pageradapters;
+package com.movile.up.seriestracker.business.adapters.pageradapters;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
