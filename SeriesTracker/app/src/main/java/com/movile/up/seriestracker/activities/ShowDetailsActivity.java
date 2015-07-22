@@ -1,5 +1,7 @@
 package com.movile.up.seriestracker.activities;
 
+import android.graphics.Color;
+import android.support.v4.view.PagerTabStrip;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -18,7 +20,14 @@ public class ShowDetailsActivity extends AppCompatActivity{
         setContentView(R.layout.activity_show_details);
         ViewPager pager = (ViewPager) findViewById(R.id.view_pager);
         ShowFragmentPageAdapter adapter= new ShowFragmentPageAdapter(getSupportFragmentManager());
+        PagerTabStrip tab = (PagerTabStrip) findViewById(R.id.pager_tab);
+        tab.setTextColor(Color.WHITE);
+        tab.setTabIndicatorColor(Color.WHITE);
+
         pager.setAdapter(adapter);
+
+
+
     }
 
     @Override

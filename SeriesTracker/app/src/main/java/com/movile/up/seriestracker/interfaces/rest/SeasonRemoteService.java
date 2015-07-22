@@ -30,6 +30,4 @@ public interface SeasonRemoteService {
     void getSeason(
             @Path("show") String show,
             Callback<List<Season>> callback);
-
-
 }

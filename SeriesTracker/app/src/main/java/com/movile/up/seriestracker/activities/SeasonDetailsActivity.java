@@ -48,8 +48,9 @@ public class SeasonDetailsActivity extends BaseNavigationToolbarActivity  implem
         this.episodeList.setAdapter(episodeListAdapter);
         presenter.presentSeason("game-of-thrones", 2L);
         //setar season e serie aqui
-        String actionBarTitle = "Game of thrones S2";
+        String actionBarTitle = "game of thrones S2";
         getSupportActionBar().setTitle(actionBarTitle);
+
         this.episodeList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -103,11 +104,16 @@ public class SeasonDetailsActivity extends BaseNavigationToolbarActivity  implem
     @Override
     public void displaySeasonEpisodes(List<Episode> episodeDetails) {
         this.episodeListAdapter.notifyListChanged(episodeDetails);
+
     }
 
 
     @Override
     public void performItemClickAction(long episode) {
+        if(episode==-1){
+            return;
+        }
+
         Intent intent = new Intent(SeasonDetailsActivity.this,EpisodeDetailsActivity.class);
         intent.putExtra(SHOW,"game-of-thrones");
         intent.putExtra(SEASON,2L);

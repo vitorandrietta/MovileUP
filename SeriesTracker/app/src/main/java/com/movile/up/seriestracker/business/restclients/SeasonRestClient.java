@@ -23,7 +23,7 @@ import retrofit.client.Response;
  */
 public class SeasonRestClient implements SeasonClient {
 
-    private static final String TAG = EpisodeRestClient.class.getSimpleName();
+    private static final String TAG = SeasonRestClient.class.getSimpleName();
 
     @Override
      public void processSeason(String show, final long season, final SeasonPresenter presenter, Context context) {
@@ -38,7 +38,7 @@ public class SeasonRestClient implements SeasonClient {
 
          @Override
          public void failure(RetrofitError error) {
-             Log.e(TAG, "Error fetching episode", error.getCause());
+             Log.e(TAG, "Error fetching season", error.getCause());
          }
      });
 
@@ -59,7 +59,7 @@ public class SeasonRestClient implements SeasonClient {
 
             @Override
             public void failure(RetrofitError error) {
-                Log.e(TAG, "Error fetching episode", error.getCause());
+                Log.e(TAG, "Error fetching season episodes", error.getCause());
             }
         });
     }
