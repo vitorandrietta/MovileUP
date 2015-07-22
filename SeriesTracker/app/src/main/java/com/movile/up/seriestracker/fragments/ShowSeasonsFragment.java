@@ -1,27 +1,53 @@
 package com.movile.up.seriestracker.fragments;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.movile.up.seriestracker.R;
+import com.movile.up.seriestracker.activities.SeasonDetailsActivity;
+import com.movile.up.seriestracker.business.presenters.SeasonsFragmentPresenter;
+import com.movile.up.seriestracker.business.recyclerviewadapters.SeasonsRecyclerAdapter;
+import com.movile.up.seriestracker.interfaces.view.SeasonFragmentClick;
+import com.movile.up.seriestracker.interfaces.view.ShowSeasonsView;
+import com.movile.up.seriestracker.model.models.Season;
 
-public class ShowSeasonsFragment extends Fragment {
+import java.util.List;
 
+public class ShowSeasonsFragment extends Fragment implements ShowSeasonsView {
 
-
+    private SeasonsRecyclerAdapter seasonsAdapter;
+    private SeasonsFragmentPresenter presenter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        return inflater.inflate(R.layout.fragment_show_seasons, container, false);
+        View view = inflater.inflate(R.layout.fragment_show_seasons, container, false);
+        RecyclerView recyclerView = (RecyclerView)  view.findViewById(R.id.recycler_view_seasons);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
+        seasonsAdapter = new SeasonsRecyclerAdapter(getActivity(),R.layout.season_item_layout);
+        recyclerView.setAdapter(seasonsAdapter);
+        presenter = new SeasonsFragmentPresenter(this,getActivity());
+        presenter.processSeasons("breaking-bad");
+        return view;
+
     }
 
+
+    @Override
+    public void displaySeasons(List<Season> seasons) {
+        seasonsAdapter.updateContents(seasons);
+    }
 
 
 }

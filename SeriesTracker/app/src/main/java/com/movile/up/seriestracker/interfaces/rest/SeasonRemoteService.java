@@ -27,7 +27,7 @@ public interface SeasonRemoteService {
             Callback<List<Episode>> callback);
 
     @GET("/shows/{show}/seasons?extended=full,images")
-    void getSeason(
+    void getSeasons(
             @Path("show") String show,
             Callback<List<Season>> callback);
 }

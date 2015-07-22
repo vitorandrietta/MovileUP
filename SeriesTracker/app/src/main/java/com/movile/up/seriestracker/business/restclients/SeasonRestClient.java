@@ -30,7 +30,7 @@ public class SeasonRestClient implements SeasonClient {
         RestAdapter mAdapter = new RestAdapter.Builder().setEndpoint(context.getString(R.string.api_url_base)).build();
         SeasonRemoteService service = mAdapter.create(SeasonRemoteService.class);
 
-     service.getSeason(show, new Callback<List<Season>>() {
+     service.getSeasons(show, new Callback<List<Season>>() {
          @Override
          public void success(List<Season> seasons, Response response) {
              presenter.onSeasonCallback(seasons.get((int)season));
