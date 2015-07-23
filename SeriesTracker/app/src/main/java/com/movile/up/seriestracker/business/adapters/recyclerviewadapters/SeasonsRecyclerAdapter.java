@@ -16,6 +16,7 @@ import com.movile.up.seriestracker.configuration.ImageTypes;
 import com.movile.up.seriestracker.configuration.InformationKeys;
 import com.movile.up.seriestracker.interfaces.view.SeasonFragmentClick;
 import com.movile.up.seriestracker.model.models.Season;
+import com.movile.up.seriestracker.model.models.Show;
 
 import java.util.List;
 
@@ -38,21 +39,20 @@ public class SeasonsRecyclerAdapter extends RecyclerView.Adapter<SeasonsRecycler
     public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i)  {
         View view = LayoutInflater.from(viewGroup.getContext()).inflate(mLayout, viewGroup, false);
         final ViewHolder viewHolder = new ViewHolder(view,this.mContext,this.show);
-        view.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                viewHolder.onSeasonClicked(view);
-            }
-        });
         return  viewHolder;
      }
 
     @Override
-    public void onBindViewHolder(ViewHolder viewHolder, int i) {
-        Season season = this.seasonList.get(i);
+    public void onBindViewHolder(final ViewHolder viewHolder, int i) {
+        final Season season = this.seasonList.get(i);
         viewHolder.seasonNumberText.setText("Season ".concat(Long.toString(season.number())));
         viewHolder.seasonsEpisodesNumberText.setText((Long.toString(season.episodeCount())).concat(" Episodes"));
-
+        viewHolder.root.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                viewHolder.onSeasonClicked(season);
+            }
+        });
         Glide.with(mContext).
                 load(season.images().poster().get(ImageTypes.IMAGE_FULL)).
                 centerCrop().
@@ -76,6 +76,7 @@ public class SeasonsRecyclerAdapter extends RecyclerView.Adapter<SeasonsRecycler
         public ImageView seasonsThumb;
         public Context context;
         public String show;
+        public View root;
 
         public ViewHolder(View itemView,Context context,String show) {
             super(itemView);
@@ -84,14 +85,13 @@ public class SeasonsRecyclerAdapter extends RecyclerView.Adapter<SeasonsRecycler
             this.seasonsThumb = (ImageView) itemView.findViewById(R.id.seasonMainImage);
             this.show= show;
             this.context=context;
+            this.root = itemView;
         }
 
         @Override
-        public void onSeasonClicked(View root) {
+        public void onSeasonClicked(Season season) {
             Intent intent =  new Intent(this.context, SeasonDetailsActivity.class);
-            String seasonStr = this.seasonNumberText.getText().toString();
-            Long seasonNumber = Long.parseLong(seasonStr.substring(seasonStr.indexOf(" ") + 1));
-            intent.putExtra(InformationKeys.SEASON,seasonNumber);
+            intent.putExtra(InformationKeys.SEASON,season.number());
             intent.putExtra(InformationKeys.SHOW,this.show);
             context.startActivity(intent);
         }

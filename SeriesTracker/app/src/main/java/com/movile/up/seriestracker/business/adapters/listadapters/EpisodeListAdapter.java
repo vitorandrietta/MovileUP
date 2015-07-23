@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
@@ -35,10 +36,12 @@ public class EpisodeListAdapter extends ArrayAdapter<Episode> {
     private static class EpisodeListItemHolder {
 
         private final TextView episodeNumber,episodeTitle;
+        private View root;
 
         public EpisodeListItemHolder(View root) {
             this.episodeNumber = (TextView) root.findViewById(R.id.episodeNumberText);
             this.episodeTitle = (TextView) root.findViewById(R.id.episodeTitle);
+            this.root = root;
         }
 
         public TextView getEpisodeTitle() {
@@ -48,6 +51,11 @@ public class EpisodeListAdapter extends ArrayAdapter<Episode> {
         public TextView getEpisodeNumber() {
             return episodeNumber;
         }
+
+        public View getRoot(){
+
+            return this.root;
+        }
     }
 
     public EpisodeListAdapter(Context context, int resource, SeasonDetailsView seasonView) {
@@ -56,8 +64,7 @@ public class EpisodeListAdapter extends ArrayAdapter<Episode> {
         this.seasonView = seasonView;
 
     }
-//refatorar pro season adapter ser de episodios e deixar o viewHolder interno, usar lista interna de episodes
-//notify dataset changed, colocar no update episode o mvp
+
     @Override
     public View getView(int position, View view, ViewGroup parent) {
         EpisodeListItemHolder holder;
@@ -88,8 +95,10 @@ public class EpisodeListAdapter extends ArrayAdapter<Episode> {
     private void populateViewFromHolder(EpisodeListItemHolder holder, int position) {
         if(this.episodes.isEmpty())
             return;
-        holder.getEpisodeNumber().setText("E".concat(Integer.toString(position+1)));
+        holder.getEpisodeNumber().setText("E".concat(Integer.toString(position + 1)));
         holder.getEpisodeTitle().setText(episodes.get(position).title());
+
+
 
     }
 }

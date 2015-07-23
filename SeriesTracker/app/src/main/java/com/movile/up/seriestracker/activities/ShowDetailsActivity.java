@@ -1,5 +1,6 @@
 package com.movile.up.seriestracker.activities;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.support.v4.view.PagerTabStrip;
 import android.support.v4.view.ViewPager;
@@ -16,6 +17,7 @@ import com.movile.up.seriestracker.business.adapters.pageradapters.ShowFragmentP
 import com.movile.up.seriestracker.business.adapters.recyclerviewadapters.SeasonsRecyclerAdapter;
 import com.movile.up.seriestracker.business.presenters.ShowDetailsPresenter;
 import com.movile.up.seriestracker.configuration.ImageTypes;
+import com.movile.up.seriestracker.configuration.InformationKeys;
 import com.movile.up.seriestracker.interfaces.callback.presenter.ShowPresenter;
 import com.movile.up.seriestracker.interfaces.view.ShowDetailsView;
 import com.movile.up.seriestracker.model.models.Show;
@@ -23,7 +25,7 @@ import com.movile.up.seriestracker.model.models.Show;
 
 public class ShowDetailsActivity extends BaseNavigationToolbarActivity implements ShowDetailsView {
 
-    private  SeasonsRecyclerAdapter seasonsAdapter;
+
     private ShowDetailsPresenter presenter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,11 +35,13 @@ public class ShowDetailsActivity extends BaseNavigationToolbarActivity implement
         this.configureToolbar();
         this.showLoading();
         ViewPager pager = (ViewPager) findViewById(R.id.view_pager);
-        ShowFragmentPageAdapter showviewPagerAdapter = new ShowFragmentPageAdapter(getSupportFragmentManager());
-        pager.setAdapter(showviewPagerAdapter);
+        ShowFragmentPageAdapter showViewPagerAdapter = new ShowFragmentPageAdapter(getSupportFragmentManager(),"d");
+        pager.setAdapter(showViewPagerAdapter);
+        Intent intent = getIntent();
+        String showSlug = intent.getStringExtra(InformationKeys.SHOW);
         presenter = new ShowDetailsPresenter(this,this);
-        presenter.processShow("breaking-bad");
-        getSupportActionBar().setTitle("Breaking Bad");
+        presenter.processShow(showSlug);
+        getSupportActionBar().setTitle(showSlug);
         this.hideLoading();
 
     }

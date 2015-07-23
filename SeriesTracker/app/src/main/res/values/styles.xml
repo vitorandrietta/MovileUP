@@ -55,4 +55,15 @@
         <item name="android:indeterminate">true</item>
     </style>
 
+    <style name="AppTheme.Grid">
+        <item name="android:numColumns">auto_fit</item>
+        <item name="android:verticalSpacing">5dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:columnWidth">114dp</item>
+        <item name="android:stretchMode">spacingWidthUniform</item>
+        <item name="android:paddingTop">5dp</item>
+        <item name="android:paddingBottom">5dp</item>
+        <item name="android:clipToPadding">false</item>
+    </style>
+
 </resources>

@@ -4,6 +4,8 @@ import com.movile.up.seriestracker.configuration.ApiConfiguration;
 import com.movile.up.seriestracker.model.models.Episode;
 import com.movile.up.seriestracker.model.models.Show;
 
+import java.util.List;
+
 import retrofit.Callback;
 import retrofit.http.GET;
 import retrofit.http.Headers;
@@ -25,4 +27,7 @@ public interface ShowRemoteService {
             @Path("show") String show,
             Callback<Show> callback);
 
+    @GET("/shows/popular?limit=50&extended=full,images")
+    void getShows(
+            Callback<List<Show>> callback);
 }
