@@ -54,6 +54,11 @@
     <dimen name="default_large_spacement">264dp</dimen>
     <dimen name="default_text_spacement">15dp</dimen>
     <dimen name="default_extra_small_spacement">3dp</dimen>
+    <dimen name="default_show_image_width">114dp</dimen>
+    <dimen name="default_show_image_height">170dp</dimen>
+    <dimen name="default_grid_show_image_spacement">5dp</dimen>
+    <dimen name="default_ended_show_card_margin_top">70dp</dimen>
+
 
     <!--292dp-->
     <!-- TO BE CONTINUED -->

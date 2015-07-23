@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import com.movile.up.seriestracker.R;
 import com.movile.up.seriestracker.business.presenters.ShowDetailsPresenter;
+import com.movile.up.seriestracker.configuration.InformationKeys;
 import com.movile.up.seriestracker.interfaces.callback.presenter.ShowPresenter;
 import com.movile.up.seriestracker.interfaces.view.ShowDetailsView;
 import com.movile.up.seriestracker.model.models.Show;
@@ -34,7 +35,8 @@ public class ShowInformationFragment extends Fragment implements ShowDetailsView
                              Bundle savedInstanceState) {
         this.root = inflater.inflate(R.layout.fragment_show_information, container, false);
         presenter = new ShowDetailsPresenter(getActivity(),this);
-        presenter.processShow("breaking-bad");
+        String show = savedInstanceState.getString(InformationKeys.SHOW);
+        presenter.processShow(show);
         return  this.root;
 
     }

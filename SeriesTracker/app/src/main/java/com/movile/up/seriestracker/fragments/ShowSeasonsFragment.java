@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import com.movile.up.seriestracker.R;
 import com.movile.up.seriestracker.business.presenters.SeasonsFragmentPresenter;
 import com.movile.up.seriestracker.business.adapters.recyclerviewadapters.SeasonsRecyclerAdapter;
+import com.movile.up.seriestracker.configuration.InformationKeys;
 import com.movile.up.seriestracker.interfaces.view.ShowSeasonsView;
 import com.movile.up.seriestracker.model.models.Season;
 
@@ -28,10 +29,11 @@ public class ShowSeasonsFragment extends Fragment implements ShowSeasonsView {
         View view = inflater.inflate(R.layout.fragment_show_seasons, container, false);
         RecyclerView recyclerView = (RecyclerView)  view.findViewById(R.id.recycler_view_seasons);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
-        seasonsAdapter = new SeasonsRecyclerAdapter(getActivity(),R.layout.season_item_layout,"breaking-bad");
+        String show = savedInstanceState.getString(InformationKeys.SHOW);
+        seasonsAdapter = new SeasonsRecyclerAdapter(getActivity(),R.layout.season_item_layout,show);
         recyclerView.setAdapter(seasonsAdapter);
         presenter = new SeasonsFragmentPresenter(this,getActivity());
-        presenter.processSeasons("breaking-bad");
+        presenter.processSeasons(show);
         return view;
 
     }

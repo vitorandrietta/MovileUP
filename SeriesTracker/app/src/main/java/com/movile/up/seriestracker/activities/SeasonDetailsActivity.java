@@ -49,6 +49,7 @@ public class SeasonDetailsActivity extends BaseNavigationToolbarActivity  implem
         episodeListAdapter = new EpisodeListAdapter(this,R.layout.episode_list_item_view,this);
         this.episodeList.setAdapter(episodeListAdapter);
         Intent intent = getIntent();
+
         this.seasonNumber = intent.getLongExtra(InformationKeys.SEASON,0l);
         this.show = intent.getStringExtra(InformationKeys.SHOW);
         presenter.presentSeason(show,seasonNumber);
@@ -86,15 +87,16 @@ public class SeasonDetailsActivity extends BaseNavigationToolbarActivity  implem
     public void displaySeasonDetails(Season season) {
         ImageView seasonImage = (ImageView) findViewById(R.id.seasonImage);
 
+
         Glide
                 .with(this).
-                load(season.images().poster().get(ImageTypes.IMAGE_FULL)).centerCrop().
+                load(season.images().thumb().get(ImageTypes.IMAGE_FULL)).centerCrop().
                 into(seasonImage);
 
         ImageView seasonThumbnail = (ImageView) findViewById(R.id.seasonThumbnail);;
 
         Glide.with(this).
-               load(season.images().thumb().get(ImageTypes.IMAGE_FULL)).
+               load(season.images().poster().get(ImageTypes.IMAGE_FULL)).
                 centerCrop().
                into(seasonThumbnail);
 

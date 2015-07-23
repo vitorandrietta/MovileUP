@@ -3,8 +3,8 @@
     android:orientation="horizontal" android:layout_width="match_parent"
     android:layout_height="match_parent">
  <ImageView
-     android:layout_width="114dp"
-     android:layout_height="170dp"
+     android:layout_width="@dimen/default_show_image_width"
+     android:layout_height="@dimen/default_show_image_height"
      android:id="@+id/showThumb"
      android:src="@drawable/show_item_placeholder"
      />

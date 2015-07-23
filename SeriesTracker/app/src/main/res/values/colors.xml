@@ -26,7 +26,8 @@
     <color name="theme_windowBackground">@color/default_background_first</color>
     <color name="base_navigation_toolbar_background">@color/default_color_first</color>
     <color name="base_navigation_toolbar_transparent_background">#88333333</color>
-    <!-- Base Loading -->
+    <color name="default_ended_card_color">#009933</color>
+
     <color name="base_loading_container_background">#99333333</color>
 
 

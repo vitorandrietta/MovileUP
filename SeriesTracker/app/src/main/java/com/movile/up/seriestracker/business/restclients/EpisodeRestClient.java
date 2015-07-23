@@ -17,7 +17,7 @@ import retrofit.client.Response;
 /**
  * Created by root on 16/07/15.
  */
-public class EpisodeRestClient implements EpisodeClient {
+public  class EpisodeRestClient implements EpisodeClient {
 
     private static final String TAG = EpisodeRestClient.class.getSimpleName();
 
