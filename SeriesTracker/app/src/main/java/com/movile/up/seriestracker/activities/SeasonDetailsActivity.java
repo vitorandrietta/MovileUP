@@ -33,6 +33,8 @@ public class SeasonDetailsActivity extends BaseNavigationToolbarActivity  implem
     private ListView episodeList;
     private EpisodeListAdapter episodeListAdapter;
     private SeasonDetailsPresenter presenter;
+    private long seasonNumber;
+    private String show;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,18 +48,18 @@ public class SeasonDetailsActivity extends BaseNavigationToolbarActivity  implem
         presenter = new SeasonDetailsPresenter(this,this);
         episodeListAdapter = new EpisodeListAdapter(this,R.layout.episode_list_item_view,this);
         this.episodeList.setAdapter(episodeListAdapter);
-        presenter.presentSeason("game-of-thrones", 2L);
-        //setar season e serie aqui
-        String actionBarTitle = "game of thrones S2";
-        getSupportActionBar().setTitle(actionBarTitle);
-
+        Intent intent = getIntent();
+        this.seasonNumber = intent.getLongExtra(InformationKeys.SEASON,0l);
+        this.show = intent.getStringExtra(InformationKeys.SHOW);
+        presenter.presentSeason(show,seasonNumber);
+        String actionBarTitle = show.concat(" S".concat(Long.toString(seasonNumber)));
+        getSupportActionBar().setTitle(actionBarTitle.replaceAll("-"," "));
         this.episodeList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 SeasonDetailsActivity.this.performItemClickAction(l);
           }
         });
-
     }
 
     @Override
@@ -115,8 +117,8 @@ public class SeasonDetailsActivity extends BaseNavigationToolbarActivity  implem
         }
 
         Intent intent = new Intent(SeasonDetailsActivity.this,EpisodeDetailsActivity.class);
-        intent.putExtra(InformationKeys.SHOW,"game-of-thrones");
-        intent.putExtra(InformationKeys.SEASON,2L);
+        intent.putExtra(InformationKeys.SHOW,this.show);
+        intent.putExtra(InformationKeys.SEASON,this.seasonNumber);
         intent.putExtra(InformationKeys.EPISODE, episode + 1L);
         startActivity(intent);
 

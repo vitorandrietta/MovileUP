@@ -1,8 +1,203 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    tools:context="com.movile.up.seriestracker.fragments.ShowInformationFragment"
+    android:layout_height="match_parent"
+        >
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.movile.up.seriestracker.fragments.ShowInformationFragment">
 
-    <!-- TODO: Update blank fragment layout -->
+    <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        card_view:cardUseCompatPadding="true"
+        android:layout_marginLeft="@dimen/card_content_margin"
+        android:layout_marginRight="@dimen/card_content_margin"
+        android:layout_marginTop="@dimen/default_spacing_medium"
+        card_view:cardCornerRadius="@dimen/default_spacing_small">
 
-</FrameLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginLeft="@dimen/default_spacing_large">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/default_spacing_large"
+                android:layout_marginTop="@dimen/default_spacing_large"
+                android:text="@string/summary"
+                android:textColor="@color/default_color_third"
+                android:textSize="@dimen/default_textSize_verySmall"
+
+                />
+
+            <View
+                android:layout_width="@dimen/default_episode_summary_line_width"
+                android:layout_height="@dimen/default_episode_summary_line_height"
+                android:layout_marginTop="@dimen/default_episode_summary_line_margin_top"
+                android:background="@color/default_background_third"
+                android:layout_marginRight="@dimen/default_episode_summary_line_margin_right" />
+
+            <TextView
+                android:id="@+id/showDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/default_episode_description_margin_bottom"
+                android:layout_marginRight="@dimen/default_spacing_large"
+                android:layout_marginTop="@dimen/default_episode_description_margin_top"
+                android:textColor="@color/default_textColor_fourth"
+                android:textSize="@dimen/default_textSize_medium" />
+
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        card_view:cardUseCompatPadding="true"
+        android:layout_marginLeft="@dimen/card_content_margin"
+        android:layout_marginRight="@dimen/card_content_margin"
+        android:layout_marginTop="@dimen/default_spacing_medium"
+        card_view:cardCornerRadius="@dimen/default_spacing_small">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginLeft="@dimen/default_spacing_large">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/default_spacing_large"
+                android:layout_marginTop="@dimen/default_spacing_large"
+                android:text="@string/genres"
+                android:textColor="@color/default_color_third"
+                android:textSize="@dimen/default_textSize_verySmall"
+                />
+
+            <View
+                android:layout_width="@dimen/default_episode_summary_line_width"
+                android:layout_height="@dimen/default_episode_summary_line_height"
+                android:layout_marginTop="@dimen/default_episode_summary_line_margin_top"
+                android:background="@color/default_background_third"
+                android:layout_marginRight="@dimen/default_episode_summary_line_margin_right" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:id="@+id/showGenres"
+                android:layout_marginBottom="@dimen/default_episode_description_margin_bottom"
+                android:layout_marginRight="@dimen/default_spacing_large"
+                android:layout_marginTop="@dimen/default_episode_description_margin_top"
+                >
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        card_view:cardUseCompatPadding="true"
+        android:layout_marginLeft="@dimen/card_content_margin"
+        android:layout_marginRight="@dimen/card_content_margin"
+        android:layout_marginTop="@dimen/default_spacing_medium"
+        card_view:cardCornerRadius="@dimen/default_spacing_small"
+
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginLeft="@dimen/default_spacing_large"
+            android:layout_marginRight="@dimen/default_text_spacement"
+
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/default_spacing_large"
+                android:layout_marginTop="@dimen/default_spacing_large"
+                android:text="@string/details"
+                android:textColor="@color/default_color_third"
+                android:textSize="@dimen/default_textSize_verySmall"
+
+                />
+
+            <View
+                android:layout_width="@dimen/default_episode_summary_line_width"
+                android:layout_height="@dimen/default_episode_summary_line_height"
+                android:layout_marginTop="@dimen/default_episode_summary_line_margin_top"
+                android:background="@color/default_background_third"
+                android:layout_marginRight="@dimen/default_episode_summary_line_margin_right" />
+
+         <TextView
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             android:layout_marginTop="@dimen/default_text_spacement"
+             android:text="@string/language"
+             android:id="@+id/showlanguage"
+           />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/default_text_spacement"
+                android:text="@string/status"
+                android:id="@+id/showStatus"
+            />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/default_text_spacement"
+                android:text="@string/episodesShow"
+                android:id="@+id/showEpisodesNumber"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/default_text_spacement"
+                android:text="@string/startedIn"
+                android:id="@+id/startedShowDate"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/default_text_spacement"
+                android:text="@string/country"
+                android:id="@+id/showCountry"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/default_text_spacement"
+                android:text="@string/homepage"
+                android:layout_marginBottom="@dimen/default_text_spacement"
+                android:id="@+id/showHomepage"
+                />
+
+        </LinearLayout>
+
+
+    </android.support.v7.widget.CardView>
+
+
+</LinearLayout>
+</ScrollView>

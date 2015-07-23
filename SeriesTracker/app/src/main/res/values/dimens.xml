@@ -2,12 +2,14 @@
     <!-- Default -->
     <dimen name="default_spacing_small">4dp</dimen>
     <dimen name="default_spacing_medium">8dp</dimen>
+    <dimen name="default_genre_card_margin">9dp</dimen>
     <dimen name="default_spacing_large">16dp</dimen>
 
     <dimen name="default_textSize_verySmall">12sp</dimen>
     <dimen name="default_textSize_small">14sp</dimen>
     <dimen name="default_textSize_medium">16sp</dimen>
     <dimen name="default_textSize_large">18sp</dimen>
+    <dimen name="default_textSize_half_veryLarge">21sp</dimen>
     <dimen name="default_textSize_veryLarge">24sp</dimen>
     <dimen name="card_cornerRadius">2dp</dimen>
     <dimen name="default_small_margin">17dp</dimen>
@@ -38,7 +40,7 @@
     <dimen name="default_season_year_width">88dp</dimen>
     <dimen name="default_season_year_margin_bottom">7dp</dimen>
     <dimen name="default_season_year_margin_left">16dp</dimen>
-    <dimen name="default_season_year_margin_top">151dp</dimen>
+    <dimen name="default_season_year_margin_top">153dp</dimen>
     <dimen name="default_list_view_divider_height">1dp</dimen>
     <dimen name="base_navigation_toolbar_height">56dp</dimen>
     <dimen name="base_navigation_toolbar_minHeight">@dimen/base_navigation_toolbar_height</dimen>
@@ -50,7 +52,8 @@
     <dimen name="default_episode_title_circle">40dp</dimen>
     <dimen name="default_extra_large_spacement">296dp</dimen>
     <dimen name="default_large_spacement">264dp</dimen>
-
+    <dimen name="default_text_spacement">15dp</dimen>
+    <dimen name="default_extra_small_spacement">3dp</dimen>
 
     <!--292dp-->
     <!-- TO BE CONTINUED -->

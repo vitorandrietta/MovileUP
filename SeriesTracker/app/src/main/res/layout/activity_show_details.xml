@@ -18,12 +18,15 @@
 
         <TextView
             android:layout_width="@dimen/default_season_year_width"
-            android:layout_height="@dimen/default_episode_time_top_margin"
+            android:layout_height="wrap_content"
             android:fontFamily="Roboto-Regular"
             android:textColor="@color/default_textColor_first"
             android:layout_marginLeft="@dimen/default_season_year_margin_left"
             android:layout_marginTop="@dimen/default_season_year_margin_top"
             android:gravity="center"
+            android:id="@+id/showYear"
+            android:textSize="@dimen/default_textSize_half_veryLarge"
+
           />
 
         <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
@@ -48,6 +51,7 @@
                 android:gravity="center"
                 android:textSize="@dimen/default_textSize_large"
                 android:textColor="@color/default_background_second"
+                android:id="@+id/showRating"
                 />
 
             </FrameLayout>

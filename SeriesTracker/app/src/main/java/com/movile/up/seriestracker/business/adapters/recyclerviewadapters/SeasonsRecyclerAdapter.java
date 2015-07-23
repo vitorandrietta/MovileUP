@@ -44,15 +44,14 @@ public class SeasonsRecyclerAdapter extends RecyclerView.Adapter<SeasonsRecycler
                 viewHolder.onSeasonClicked(view);
             }
         });
-
         return  viewHolder;
      }
 
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, int i) {
         Season season = this.seasonList.get(i);
-        viewHolder.seasonNumberText.setText("Season: ".concat(Long.toString(season.number())));
-        viewHolder.seasonsEpisodesNumberText.setText("Episodes: ".concat(Long.toString(season.episodeCount())));
+        viewHolder.seasonNumberText.setText("Season ".concat(Long.toString(season.number())));
+        viewHolder.seasonsEpisodesNumberText.setText((Long.toString(season.episodeCount())).concat(" Episodes"));
 
         Glide.with(mContext).
                 load(season.images().poster().get(ImageTypes.IMAGE_FULL)).
@@ -84,12 +83,15 @@ public class SeasonsRecyclerAdapter extends RecyclerView.Adapter<SeasonsRecycler
             this.seasonsEpisodesNumberText = (TextView) itemView.findViewById(R.id.episodesNumber);
             this.seasonsThumb = (ImageView) itemView.findViewById(R.id.seasonMainImage);
             this.show= show;
+            this.context=context;
         }
 
         @Override
         public void onSeasonClicked(View root) {
             Intent intent =  new Intent(this.context, SeasonDetailsActivity.class);
-            intent.putExtra(InformationKeys.SEASON,seasonNumberText.getText());
+            String seasonStr = this.seasonNumberText.getText().toString();
+            Long seasonNumber = Long.parseLong(seasonStr.substring(seasonStr.indexOf(" ") + 1));
+            intent.putExtra(InformationKeys.SEASON,seasonNumber);
             intent.putExtra(InformationKeys.SHOW,this.show);
             context.startActivity(intent);
         }

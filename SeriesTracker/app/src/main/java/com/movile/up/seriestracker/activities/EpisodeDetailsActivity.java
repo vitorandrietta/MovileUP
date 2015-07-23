@@ -1,7 +1,6 @@
 package com.movile.up.seriestracker.activities;
 
 import android.content.Intent;
-import android.os.PersistableBundle;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.ImageView;
@@ -12,7 +11,7 @@ import com.movile.up.seriestracker.R;
 import com.movile.up.seriestracker.business.presenters.EpisodeDetailsPresenter;
 import com.movile.up.seriestracker.configuration.ImageTypes;
 import com.movile.up.seriestracker.configuration.InformationKeys;
-import com.movile.up.seriestracker.interfaces.callback.restClient.EpisodePresenter;
+import com.movile.up.seriestracker.interfaces.callback.presenter.EpisodePresenter;
 import com.movile.up.seriestracker.interfaces.view.EpisodeDetailsView;
 import com.movile.up.seriestracker.model.models.Episode;
 

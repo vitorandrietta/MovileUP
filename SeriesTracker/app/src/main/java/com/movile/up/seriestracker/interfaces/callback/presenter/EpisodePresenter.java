@@ -1,4 +1,4 @@
-package com.movile.up.seriestracker.interfaces.callback.restClient;
+package com.movile.up.seriestracker.interfaces.callback.presenter;
 
 import com.movile.up.seriestracker.model.models.Episode;
 

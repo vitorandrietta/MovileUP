@@ -3,6 +3,7 @@
     android:layout_height="match_parent"
     tools:context="com.movile.up.seriestracker.fragments.ShowSeasonsFragment"
     android:orientation="horizontal"
+    android:layout_marginRight="@dimen/card_content_margin"
     >
 
     <android.support.v7.widget.RecyclerView

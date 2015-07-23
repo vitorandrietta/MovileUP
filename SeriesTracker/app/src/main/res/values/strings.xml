@@ -6,6 +6,14 @@
     <string name="episodeMainImageDes">contains the picture of the show</string>
     <string name="overlayDescription">overlay image</string>
     <string name="summary">SUMMARY</string>
+    <string name="genres">GENRES</string>
+    <string name="details">DETAILS</string>
+    <string name="language">Language: </string>
+    <string name="status">Status: </string>
+    <string name="episodesShow">Episodes: </string>
+    <string name="startedIn">Started in: </string>
+    <string name="country">Country: </string>
+    <string name="homepage">Homepage: </string>
     <string name="clockDescription">clock image</string>
     <string name="title_activity_season_details">SeasonDetailsActivity</string>
     <string name="episodes">Episodes</string>
@@ -17,6 +25,7 @@
     <string name="title_activity_base_loading_activity">base_loading_activity</string>
     <string name="title_activity_show">show</string>
     <string name="title_activity_show_details">show_details</string>
+
 
 <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
