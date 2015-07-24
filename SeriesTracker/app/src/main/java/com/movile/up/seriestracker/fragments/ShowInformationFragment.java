@@ -35,7 +35,7 @@ public class ShowInformationFragment extends Fragment implements ShowDetailsView
                              Bundle savedInstanceState) {
         this.root = inflater.inflate(R.layout.fragment_show_information, container, false);
         presenter = new ShowDetailsPresenter(getActivity(),this);
-        String show = savedInstanceState.getString(InformationKeys.SHOW);
+        String show = this.getArguments().getString(InformationKeys.SHOW);
         presenter.processShow(show);
         return  this.root;
 

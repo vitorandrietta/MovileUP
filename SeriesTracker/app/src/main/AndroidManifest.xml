@@ -3,7 +3,7 @@
     package="com.movile.up.seriestracker" >
 
     <uses-permission android:name="android.permission.INTERNET" />
-
+    <uses-permission android:name="android.permission.receive_boot_completed"/>
 
     <application
         android:allowBackup="true"
@@ -18,6 +18,13 @@
         adicione o estilo com style="
         -->
 
+        <receiver
+            android:name="com.movile.up.seriestracker.business.broadcasters.UpdateBroadcast"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
 
         <activity
             android:name=".activities.SeasonDetailsActivity"
@@ -42,7 +49,9 @@
         </activity>
         <activity
             android:name=".activities.ShowDetailsActivity"
-            android:label="@string/title_activity_show_details" >
+            android:label="@string/title_activity_show_details"
+            android:parentActivityName=".activities.ShowsActivity"
+            >
 
         </activity>
         <activity
@@ -58,6 +67,18 @@
             android:name="com.movile.up.seriestracker.business.services.UpdateService"
             android:enabled = "true"
             android:exported="false" />
+
+        <receiver
+            android:name="com.movile.up.seriestracker.business.broadcasters.BroadcastUpdateReceiver"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.movile.up.seriestracker.action.SHOW_UPDATE" />
+            </intent-filter>
+        </receiver>
+
+
+
+
 
     </application>
 

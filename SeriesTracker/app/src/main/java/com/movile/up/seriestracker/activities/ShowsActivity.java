@@ -32,14 +32,8 @@ public class ShowsActivity extends AppCompatActivity implements ShowsDetailsView
         showAdapter = new GridShowAdapter(this,R.layout.show_image_layout);
         GridView showsGrid = (GridView) findViewById(R.id.shows_grid_view);
         showsGrid.setAdapter(showAdapter);
-      //  presenter =  new ShowsDetailsPresenter(this,this);
-     //   presenter.processShows();
-
-        PendingIntent pendingIntent = PendingIntent.getService(this, 0, new Intent(this, UpdateService.class), 0);
-        AlarmManager manager = (AlarmManager) this.getSystemService(Context.ALARM_SERVICE);
-        manager.setRepeating(AlarmManager.RTC_WAKEUP,100, 1, pendingIntent);
-
-
+        presenter =  new ShowsDetailsPresenter(this,this);
+        presenter.processShows();
     }
 
     @Override
