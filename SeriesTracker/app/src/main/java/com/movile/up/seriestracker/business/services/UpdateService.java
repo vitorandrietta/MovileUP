@@ -16,13 +16,14 @@ public class UpdateService extends IntentService {
     private UpdateRestClient client;
 
 
-    public UpdateService(String name) {
-        super(name);
+    public UpdateService() {
+        super("Test service");
         client = new UpdateRestClient();
     }
 
     @Override
     protected void onHandleIntent(Intent intent) {
-        Log.d(TAG,client.getLastUpdate(getBaseContext()).message());
+        String message = client.getLastUpdate(getBaseContext()).message();
+        Log.v(TAG,message);
     }
 }

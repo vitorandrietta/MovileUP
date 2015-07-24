@@ -4,9 +4,6 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
 
-    <service
-        android:name=".business.services.UpdateService"
-        android:exported="false" />
 
     <application
         android:allowBackup="true"
@@ -20,6 +17,8 @@
         nao colocar coisas especificas de layout e posicionamento, mesma coisa do html
         adicione o estilo com style="
         -->
+
+
         <activity
             android:name=".activities.SeasonDetailsActivity"
             android:label="@string/title_activity_season_details" >
@@ -55,7 +54,10 @@
             </intent-filter>
         </activity>
 
-
+        <service
+            android:name="com.movile.up.seriestracker.business.services.UpdateService"
+            android:enabled = "true"
+            android:exported="false" />
 
     </application>
 
