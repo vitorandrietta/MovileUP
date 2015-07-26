@@ -12,10 +12,11 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.movile.up.seriestracker.R;
+import com.movile.up.seriestracker.activities.support.BaseNavigationToolbarActivity;
 import com.movile.up.seriestracker.business.adapters.listadapters.EpisodeListAdapter;
 import com.movile.up.seriestracker.business.presenters.SeasonDetailsPresenter;
-import com.movile.up.seriestracker.configuration.ImageTypes;
-import com.movile.up.seriestracker.configuration.InformationKeys;
+import com.movile.up.seriestracker.util.ImageTypes;
+import com.movile.up.seriestracker.util.InformationKeys;
 import com.movile.up.seriestracker.interfaces.view.EpisodeItemListClickListener;
 import com.movile.up.seriestracker.interfaces.view.SeasonDetailsView;
 import com.movile.up.seriestracker.model.models.Episode;
@@ -26,7 +27,7 @@ import java.util.List;
 
 
 
-public class SeasonDetailsActivity extends BaseNavigationToolbarActivity  implements SeasonDetailsView, EpisodeItemListClickListener {
+public class SeasonDetailsActivity extends BaseNavigationToolbarActivity implements SeasonDetailsView, EpisodeItemListClickListener {
 
 
 
@@ -49,7 +50,6 @@ public class SeasonDetailsActivity extends BaseNavigationToolbarActivity  implem
         episodeListAdapter = new EpisodeListAdapter(this,R.layout.episode_list_item_view,this);
         this.episodeList.setAdapter(episodeListAdapter);
         Intent intent = getIntent();
-
         this.seasonNumber = intent.getLongExtra(InformationKeys.SEASON,0l);
         this.show = intent.getStringExtra(InformationKeys.SHOW);
         presenter.presentSeason(show,seasonNumber);
@@ -117,7 +117,6 @@ public class SeasonDetailsActivity extends BaseNavigationToolbarActivity  implem
         if(episode==-1){
             return;
         }
-
         Intent intent = new Intent(SeasonDetailsActivity.this,EpisodeDetailsActivity.class);
         intent.putExtra(InformationKeys.SHOW,this.show);
         intent.putExtra(InformationKeys.SEASON,this.seasonNumber);

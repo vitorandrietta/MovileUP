@@ -11,8 +11,8 @@ import android.widget.ImageView;
 import com.bumptech.glide.Glide;
 import com.movile.up.seriestracker.R;
 import com.movile.up.seriestracker.activities.ShowDetailsActivity;
-import com.movile.up.seriestracker.configuration.ImageTypes;
-import com.movile.up.seriestracker.configuration.InformationKeys;
+import com.movile.up.seriestracker.util.ImageTypes;
+import com.movile.up.seriestracker.util.InformationKeys;
 import com.movile.up.seriestracker.interfaces.view.ShowElementClick;
 import com.movile.up.seriestracker.model.models.Show;
 

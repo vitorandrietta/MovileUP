@@ -1,4 +1,4 @@
-package com.movile.up.seriestracker.configuration;
+package com.movile.up.seriestracker.util;
 
 /**
  * Created by root on 23/07/15.

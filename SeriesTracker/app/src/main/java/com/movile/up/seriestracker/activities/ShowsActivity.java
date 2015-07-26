@@ -4,7 +4,6 @@ import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
@@ -15,7 +14,6 @@ import com.movile.up.seriestracker.R;
 import com.movile.up.seriestracker.business.adapters.gridadapters.GridShowAdapter;
 import com.movile.up.seriestracker.business.presenters.ShowsDetailsPresenter;
 import com.movile.up.seriestracker.business.services.UpdateService;
-import com.movile.up.seriestracker.interfaces.callback.presenter.ShowsPresenter;
 import com.movile.up.seriestracker.interfaces.view.ShowsDetailsView;
 import com.movile.up.seriestracker.model.models.Show;
 
@@ -34,6 +32,8 @@ public class ShowsActivity extends AppCompatActivity implements ShowsDetailsView
         showsGrid.setAdapter(showAdapter);
         presenter =  new ShowsDetailsPresenter(this,this);
         presenter.processShows();
+
+
     }
 
     @Override

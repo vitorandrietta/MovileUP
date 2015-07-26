@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.movile.up.seriestracker.business.restclients.SeasonFragmentRestClient;
 import com.movile.up.seriestracker.interfaces.callback.presenter.FragmentSeasonPresenter;
+import com.movile.up.seriestracker.interfaces.callback.restClient.SeasonFragmentClient;
 import com.movile.up.seriestracker.interfaces.view.ShowSeasonsView;
 import com.movile.up.seriestracker.model.models.Season;
 
@@ -14,12 +15,10 @@ import java.util.List;
  */
 public class SeasonsFragmentPresenter implements FragmentSeasonPresenter {
 
-    private SeasonFragmentRestClient client;
     private ShowSeasonsView seasonsView;
     private Context context;
 
     public SeasonsFragmentPresenter(ShowSeasonsView seasonsView,Context context) {
-        client = new SeasonFragmentRestClient();
         this.seasonsView = seasonsView;
         this.context = context;
 
@@ -33,6 +32,6 @@ public class SeasonsFragmentPresenter implements FragmentSeasonPresenter {
 
     @Override
     public void processSeasons(String show) {
-        this.client.processSeasons(show,this,context);
+        SeasonFragmentRestClient.processSeasons(show, this, context);
     }
 }

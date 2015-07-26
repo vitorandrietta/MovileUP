@@ -5,7 +5,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import com.movile.up.seriestracker.configuration.InformationKeys;
+import com.movile.up.seriestracker.util.InformationKeys;
 import com.movile.up.seriestracker.fragments.ShowInformationFragment;
 import com.movile.up.seriestracker.fragments.ShowSeasonsFragment;
 

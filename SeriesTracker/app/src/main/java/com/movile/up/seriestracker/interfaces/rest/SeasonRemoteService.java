@@ -1,6 +1,6 @@
 package com.movile.up.seriestracker.interfaces.rest;
 
-import com.movile.up.seriestracker.configuration.ApiConfiguration;
+import com.movile.up.seriestracker.util.ApiConfiguration;
 import com.movile.up.seriestracker.model.models.Episode;
 import com.movile.up.seriestracker.model.models.Season;
 
@@ -16,11 +16,9 @@ import retrofit.http.Path;
  */
 public interface SeasonRemoteService {
     @Headers({
-
-            "trakt-api-version: "+ ApiConfiguration.API_VERSION,
-            "trakt-api-key: " + ApiConfiguration.API_KEY
-
-            })
+            "trakt-api-key: " + ApiConfiguration.API_KEY,
+            "trakt-api-version: " + ApiConfiguration.API_VERSION
+    })
     @GET("/shows/{show}/seasons/{season}?extended=full,images")
     void getSeasonEpisodes(
             @Path("show") String show,

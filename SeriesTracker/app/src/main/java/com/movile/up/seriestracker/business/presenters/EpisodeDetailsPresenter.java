@@ -15,16 +15,16 @@ public class EpisodeDetailsPresenter implements EpisodePresenter {
     private EpisodeDetailsView mView;
     private Context context;
     private static final String TAG = EpisodePresenter.class.getSimpleName();
-    private EpisodeRestClient client;
+
 
     public EpisodeDetailsPresenter(EpisodeDetailsView mView,Context context){
         this.mView = mView;
         this.context = context;
-        this.client = new EpisodeRestClient();
+
     }
 
     public void presentEpisode(String show, Long season, Long episode) {
-        client.processEpisode(show,season,episode,this,this.context);
+        EpisodeRestClient.processEpisode(show, season, episode, this, this.context);
     }
 
     @Override

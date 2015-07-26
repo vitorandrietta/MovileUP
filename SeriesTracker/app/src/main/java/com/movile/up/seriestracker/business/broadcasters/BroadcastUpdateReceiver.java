@@ -7,13 +7,11 @@ import android.app.TaskStackBuilder;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.support.v4.app.NotificationCompat;
-import android.util.Log;
 
 import com.movile.up.seriestracker.R;
 import com.movile.up.seriestracker.activities.ShowDetailsActivity;
-import com.movile.up.seriestracker.configuration.InformationKeys;
+import com.movile.up.seriestracker.util.InformationKeys;
 import com.movile.up.seriestracker.model.models.ShowUpdate;
 
 /**
@@ -25,14 +23,15 @@ public class BroadcastUpdateReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
-       ShowUpdate showUpdateMessage = (ShowUpdate) intent.getSerializableExtra(InformationKeys.SERVICE_MESSAGE);
+        ShowUpdate showUpdateMessage = (ShowUpdate) intent.getSerializableExtra(InformationKeys.SERVICE_MESSAGE);
+
         Intent showItent = new Intent(context, ShowDetailsActivity.class);
-        intent.putExtra(InformationKeys.SHOW, showUpdateMessage.show());
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        showItent.putExtra(InformationKeys.SHOW, showUpdateMessage.show());
+        showItent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
         TaskStackBuilder stackBuilder = TaskStackBuilder.create(context);
         stackBuilder.addParentStack(ShowDetailsActivity.class);
-        stackBuilder.addNextIntent(intent);
+        stackBuilder.addNextIntent(showItent);
 
         PendingIntent pendingIntent = stackBuilder.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
 

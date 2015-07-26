@@ -1,9 +1,8 @@
 package com.movile.up.seriestracker.business.connection;
 import android.content.Context;
-import android.content.res.Resources;
 
 import com.movile.up.seriestracker.R;
-import com.movile.up.seriestracker.configuration.ApiConfiguration;
+import com.movile.up.seriestracker.util.ApiConfiguration;
 
 import java.io.IOException;
 import java.net.HttpURLConnection;

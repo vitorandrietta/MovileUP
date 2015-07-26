@@ -18,12 +18,11 @@ public class SeasonDetailsPresenter implements SeasonPresenter {
     private SeasonDetailsView mView;
     private Context context;
     private static final String TAG = SeasonPresenter.class.getSimpleName();
-    private SeasonRestClient client;
 
     public SeasonDetailsPresenter(SeasonDetailsView mView,Context context){
         this.mView = mView;
         this.context = context;
-        this.client = new SeasonRestClient();
+
     }
 
 
@@ -36,8 +35,8 @@ public class SeasonDetailsPresenter implements SeasonPresenter {
 
     @Override
     public void presentSeason(String show, Long season) {
-        client.processSeasonEpisodes(show,season,this,context);
-        client.processSeason(show,season,this,this.context);
+        SeasonRestClient.processSeasonEpisodes(show, season, this, context);
+        SeasonRestClient.processSeason(show, season, this, this.context);
     }
 
     @Override

@@ -1,4 +1,4 @@
-package com.movile.up.seriestracker.business;
+package com.movile.up.seriestracker.interfaces.rest;
 
 /**
  * Created by android on 7/23/15.

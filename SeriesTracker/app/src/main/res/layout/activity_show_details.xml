@@ -89,32 +89,17 @@
             </FrameLayout>
         </android.support.v7.widget.CardView>
 
-    <!-- -->
 
-        <FrameLayout
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/show_details_favorite"
             android:layout_width="@dimen/base_navigation_toolbar_height"
             android:layout_height="@dimen/base_navigation_toolbar_height"
             android:layout_marginTop="@dimen/default_show_favorite_button_margin_top"
             android:layout_marginLeft="@dimen/default_show_favorite_button_margin_left"
 
-            >
+            />
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/circle"
-                >
-            </View>
-            <View
-                android:layout_width="@dimen/default_episode_description_margin_bottom"
-                android:layout_height="@dimen/activity_horizontal_margin"
-                android:layout_gravity="center"
-                android:background="@drawable/show_details_favorite_on"
-                >
-            </View>
-
-
-        </FrameLayout>
+            <!--style="@style/AppTheme.ShowDetails.Favorite"--> />
 
 
     </RelativeLayout>

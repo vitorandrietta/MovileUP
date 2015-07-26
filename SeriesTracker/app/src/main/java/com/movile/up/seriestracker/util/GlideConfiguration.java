@@ -1,4 +1,4 @@
-package com.movile.up.seriestracker.configuration;
+package com.movile.up.seriestracker.util;
 
 import android.content.Context;
 

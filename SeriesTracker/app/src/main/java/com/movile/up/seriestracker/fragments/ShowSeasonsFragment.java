@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 import com.movile.up.seriestracker.R;
 import com.movile.up.seriestracker.business.presenters.SeasonsFragmentPresenter;
 import com.movile.up.seriestracker.business.adapters.recyclerviewadapters.SeasonsRecyclerAdapter;
-import com.movile.up.seriestracker.configuration.InformationKeys;
+import com.movile.up.seriestracker.util.InformationKeys;
 import com.movile.up.seriestracker.interfaces.view.ShowSeasonsView;
 import com.movile.up.seriestracker.model.models.Season;
 

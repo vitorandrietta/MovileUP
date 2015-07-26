@@ -3,50 +3,35 @@
     package="com.movile.up.seriestracker" >
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.receive_boot_completed"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/favorites_header_tv_happy"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
-
-        <!--
- Style da aplicacao, estilo (o css do android)
-        subclasses do css sao importantes, <style name=""> permite overwrite
-        nao colocar coisas especificas de layout e posicionamento, mesma coisa do html
-        adicione o estilo com style="
-        -->
-
-        <receiver
-            android:name="com.movile.up.seriestracker.business.broadcasters.UpdateBroadcast"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.BOOT_COMPLETED" />
-            </intent-filter>
-        </receiver>
+        android:theme="@style/AppTheme">
 
         <activity
             android:name=".activities.SeasonDetailsActivity"
             android:label="@string/title_activity_season_details" >
         </activity>
 
-        <meta-data
-            android:name="com.movile.up.seriestracker.configuration.GlideConfiguration"
-            android:value="GlideModule" />
-
         <activity
             android:name=".activities.EpisodeDetailsActivity"
             android:label="@string/app_name" >
         </activity>
+
         <activity
-            android:name=".activities.BaseNavigationToolbarActivity"
+            android:name=".activities.support.BaseNavigationToolbarActivity"
             android:label="@string/title_activity_base_navigation_toolbar_activity" >
         </activity>
+
         <activity
-            android:name=".activities.BaseLoadingActivity"
+            android:name=".activities.support.BaseLoadingActivity"
             android:label="@string/title_activity_base_loading_activity" >
         </activity>
+
         <activity
             android:name=".activities.ShowDetailsActivity"
             android:label="@string/title_activity_show_details"
@@ -54,6 +39,7 @@
             >
 
         </activity>
+
         <activity
             android:name=".activities.ShowsActivity"
             android:label="@string/title_activity_shows" >
@@ -64,7 +50,7 @@
         </activity>
 
         <service
-            android:name="com.movile.up.seriestracker.business.services.UpdateService"
+            android:name=".business.services.UpdateService"
             android:enabled = "true"
             android:exported="false" />
 
@@ -77,8 +63,17 @@
         </receiver>
 
 
+        <receiver
+            android:name=".business.broadcasters.BootUpdateBroadcast"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
 
-
+        <meta-data
+            android:name="com.movile.up.seriestracker.util.GlideConfiguration"
+            android:value="GlideModule" />
 
     </application>
 

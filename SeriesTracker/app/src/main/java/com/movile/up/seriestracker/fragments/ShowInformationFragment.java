@@ -1,8 +1,5 @@
 package com.movile.up.seriestracker.fragments;
 
-import android.app.Activity;
-import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 
 import android.support.v4.app.Fragment;
@@ -15,12 +12,10 @@ import android.widget.TextView;
 
 import com.movile.up.seriestracker.R;
 import com.movile.up.seriestracker.business.presenters.ShowDetailsPresenter;
-import com.movile.up.seriestracker.configuration.InformationKeys;
-import com.movile.up.seriestracker.interfaces.callback.presenter.ShowPresenter;
+import com.movile.up.seriestracker.util.FormatUtil;
+import com.movile.up.seriestracker.util.InformationKeys;
 import com.movile.up.seriestracker.interfaces.view.ShowDetailsView;
 import com.movile.up.seriestracker.model.models.Show;
-
-import org.w3c.dom.Text;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -73,18 +68,8 @@ public class ShowInformationFragment extends Fragment implements ShowDetailsView
             genresOutContainer.addView(container);
         }
 
-        SimpleDateFormat utcToDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
-        Date showDate = null;
-        String showBeginTime=null;
-
-        try {
-             showDate = utcToDateFormat.parse(show.firstAired());
-             showBeginTime= new SimpleDateFormat("yyyy").format(showDate);
-        } catch (Exception e) {
-            e.printStackTrace();
-            Log.d(TAG, "Error converting episode begining time to datetime");
-        }
-
+        Date episodeDate = FormatUtil.formatDate(show.firstAired());
+        String showBeginTime = FormatUtil.formatDate(episodeDate);
 
         showHomepage.setText(showHomepage.getText().toString().concat(" "+show.network().toString()));
         showEpisodesNumber.setText(showEpisodesNumber.getText().toString().concat(" "+Long.toString(show.airedEpisodes())));

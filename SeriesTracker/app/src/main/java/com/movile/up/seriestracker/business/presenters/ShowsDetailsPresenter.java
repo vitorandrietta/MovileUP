@@ -16,13 +16,12 @@ public class ShowsDetailsPresenter implements ShowsPresenter{
 
     private Context context;
     private ShowsDetailsView mView;
-    private ShowRestClient client;
 
 
     public ShowsDetailsPresenter(Context context,ShowsDetailsView showsView){
         this.context = context;
         this.mView = showsView;
-        this.client =  new ShowRestClient();
+
     }
 
     @Override
@@ -33,6 +32,6 @@ public class ShowsDetailsPresenter implements ShowsPresenter{
 
     @Override
     public void processShows() {
-        client.processShows(this,this.context);
+        ShowRestClient.processShows(this, this.context);
     }
 }

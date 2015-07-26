@@ -1,4 +1,4 @@
-package com.movile.up.seriestracker.configuration;
+package com.movile.up.seriestracker.util;
 
 /**
  * Created by android on 7/17/15.

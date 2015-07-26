@@ -1,4 +1,4 @@
-package com.movile.up.seriestracker.activities;
+package com.movile.up.seriestracker.activities.support;
 
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
