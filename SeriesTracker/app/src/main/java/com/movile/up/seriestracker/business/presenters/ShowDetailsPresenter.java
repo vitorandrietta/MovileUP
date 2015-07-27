@@ -2,6 +2,7 @@ package com.movile.up.seriestracker.business.presenters;
 
 import android.content.Context;
 
+import com.movile.up.seriestracker.business.assynctask.IsFavoriteTask;
 import com.movile.up.seriestracker.business.restclients.ShowRestClient;
 import com.movile.up.seriestracker.interfaces.callback.presenter.ShowPresenter;
 import com.movile.up.seriestracker.interfaces.view.ShowDetailsView;
@@ -21,6 +22,10 @@ public class ShowDetailsPresenter implements ShowPresenter {
         this.view = view;
 
 
+    }
+
+    public void loadFavorite(String show){
+        new IsFavoriteTask(this.view).execute(show);
     }
 
     @Override

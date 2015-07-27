@@ -6,29 +6,30 @@
     <FrameLayout
         android:layout_width="@dimen/default_episode_description_margin_bottom"
         android:layout_height="@dimen/activity_horizontal_margin"
-        android:layout_marginLeft="27dp"
-
+        android:layout_marginLeft="@dimen/default_favorite_list_item_margin_left"
+        android:layout_marginBottom="@dimen/default_card_show_rating_margin_left"
 
         >
         <View
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@drawable/favorite_item_icon_heart"
+
             >
         </View>
 
     </FrameLayout>
 
     <TextView
-        android:layout_width="@dimen/default_episode_header_height"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/default_episode_clock_margin"
-        android:layout_marginLeft="@dimen/card_content_margin"
+        android:layout_marginLeft="@dimen/default_favorite_list_item_margin_left"
         android:textSize="@dimen/default_textSize_medium"
-        android:textColor="@color/default_textColor_fourth"
+        android:textColor="@color/default_textColor_fifth"
         android:id="@+id/favoriteShow"
-        android:fontFamily="Roboto-Regular"
-        android:layout_marginBottom="@dimen/default_episode_description_margin_top"
+        android:fontFamily="Roboto-Medium"
+        android:text="Agents of S.H.I.E.L.D."
+
         />
 
 </LinearLayout>

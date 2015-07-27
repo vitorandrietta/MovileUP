@@ -58,7 +58,7 @@ public class ShowDetailsActivity extends BaseNavigationToolbarActivity implement
             }
         });
 
-        new IsFavoriteTask(this).execute(this.showSlug);
+        presenter.loadFavorite(showSlug);
         this.hideLoading();
 
     }

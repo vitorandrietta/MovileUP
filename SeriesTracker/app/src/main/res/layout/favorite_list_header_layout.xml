@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/default_favorite_list_header_height"
+    android:id="@+id/favorite_header_container"
+    android:background="@color/default_textColor_second"
+    >
+    
+    <ImageView
+        android:layout_width="@dimen/default_favorite_list_header_tv_image_width"
+        android:layout_height="@dimen/default_favorite_list_header_tv_image_height"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_centerInParent="true"
+        android:id="@+id/tv_favorite_image"
+        android:background="@drawable/favorites_header_tv_unhappy"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/default_favorite_message_margin_top"
+        android:layout_marginLeft="@dimen/default_season_thumbnail_margin_left"
+        android:textColor="@color/default_textColor_first"
+        android:textSize="@dimen/default_textSize_medium"
+        android:text="@string/favorite_header_message"
+        android:fontFamily="Roboto-Regular"
+
+        />
+
+</RelativeLayout>

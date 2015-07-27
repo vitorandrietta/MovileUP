@@ -20,6 +20,7 @@
     <string name="episodes">Episodes</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="favorite_header_message">Favourited Shows</string>
     <string name="title_activity_base_navigation_toolbar_activity">
         base_navigation_toolbar_activity
     </string>
