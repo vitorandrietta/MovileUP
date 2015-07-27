@@ -26,7 +26,7 @@ public class BroadcastUpdateReceiver extends BroadcastReceiver {
         ShowUpdate showUpdateMessage = (ShowUpdate) intent.getSerializableExtra(InformationKeys.SERVICE_MESSAGE);
 
         Intent showItent = new Intent(context, ShowDetailsActivity.class);
-        showItent.putExtra(InformationKeys.SHOW, showUpdateMessage.show());
+        showItent.putExtra(InformationKeys.SHOW_SLUG, showUpdateMessage.show());
         showItent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
         TaskStackBuilder stackBuilder = TaskStackBuilder.create(context);

@@ -1,5 +1,6 @@
 package com.movile.up.seriestracker.interfaces.view;
 
+import com.movile.up.seriestracker.database_dbflow.FavoriteEntity;
 import com.movile.up.seriestracker.model.models.Show;
 
 /**
@@ -8,5 +9,5 @@ import com.movile.up.seriestracker.model.models.Show;
 public interface ShowDetailsView {
     public void displayShow(Show show);
     public void changeButtonVisualState(boolean state);
-    public void setButtonState(boolean state);
+    public void loadButtonFirstState(FavoriteEntity entity);
 }

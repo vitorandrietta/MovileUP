@@ -51,7 +51,7 @@ public class SeasonDetailsActivity extends BaseNavigationToolbarActivity impleme
         this.episodeList.setAdapter(episodeListAdapter);
         Intent intent = getIntent();
         this.seasonNumber = intent.getLongExtra(InformationKeys.SEASON,0l);
-        this.show = intent.getStringExtra(InformationKeys.SHOW);
+        this.show = intent.getStringExtra(InformationKeys.SHOW_SLUG);
         presenter.presentSeason(show,seasonNumber);
         String actionBarTitle = show.concat(" S".concat(Long.toString(seasonNumber)));
         getSupportActionBar().setTitle(actionBarTitle.replaceAll("-"," "));
@@ -118,7 +118,7 @@ public class SeasonDetailsActivity extends BaseNavigationToolbarActivity impleme
             return;
         }
         Intent intent = new Intent(SeasonDetailsActivity.this,EpisodeDetailsActivity.class);
-        intent.putExtra(InformationKeys.SHOW,this.show);
+        intent.putExtra(InformationKeys.SHOW_SLUG,this.show);
         intent.putExtra(InformationKeys.SEASON,this.seasonNumber);
         intent.putExtra(InformationKeys.EPISODE, episode + 1L);
         startActivity(intent);

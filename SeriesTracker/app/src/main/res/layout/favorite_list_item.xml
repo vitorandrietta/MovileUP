@@ -28,7 +28,7 @@
         android:textColor="@color/default_textColor_fifth"
         android:id="@+id/favoriteShow"
         android:fontFamily="Roboto-Medium"
-        android:text="Agents of S.H.I.E.L.D."
+
 
         />
 

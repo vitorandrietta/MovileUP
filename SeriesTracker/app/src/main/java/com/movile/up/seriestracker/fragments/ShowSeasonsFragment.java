@@ -29,7 +29,7 @@ public class ShowSeasonsFragment extends Fragment implements ShowSeasonsView {
         View view = inflater.inflate(R.layout.fragment_show_seasons, container, false);
         RecyclerView recyclerView = (RecyclerView)  view.findViewById(R.id.recycler_view_seasons);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
-        String show = this.getArguments().getString(InformationKeys.SHOW);
+        String show = this.getArguments().getString(InformationKeys.SHOW_SLUG);
         seasonsAdapter = new SeasonsRecyclerAdapter(getActivity(),R.layout.season_item_layout,show);
         recyclerView.setAdapter(seasonsAdapter);
         presenter = new SeasonsFragmentPresenter(this,getActivity());

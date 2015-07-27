@@ -18,4 +18,24 @@ public class FavoriteEntity extends BaseModel {
 
     @Column
     String slug;
+
+    @Column
+    String title;
+
+    public FavoriteEntity(){
+
+    }
+
+    public String getSlug() {
+        return slug;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public FavoriteEntity(String slug, String title) {
+        this.slug = slug;
+        this.title = title;
+    }
 }

@@ -2,7 +2,6 @@ package com.movile.up.seriestracker.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -17,8 +16,6 @@ import com.movile.up.seriestracker.interfaces.callback.presenter.EpisodePresente
 import com.movile.up.seriestracker.interfaces.view.EpisodeDetailsView;
 import com.movile.up.seriestracker.model.models.Episode;
 
-import java.text.Normalizer;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 
@@ -34,7 +31,7 @@ public class EpisodeDetailsActivity extends BaseNavigationToolbarActivity implem
         this.configureToolbar();
         this.showLoading();
         Intent intent = getIntent();
-        String show = intent.getStringExtra(InformationKeys.SHOW);
+        String show = intent.getStringExtra(InformationKeys.SHOW_SLUG);
         Long season = intent.getLongExtra(InformationKeys.SEASON, 0L);
         Long episodes = intent.getLongExtra(InformationKeys.EPISODE,0L);
         String actionBarTitle = ("S").concat(season.toString()).concat("E".concat(episodes.toString()));

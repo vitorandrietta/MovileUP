@@ -91,7 +91,7 @@ public class SeasonsRecyclerAdapter extends RecyclerView.Adapter<SeasonsRecycler
         public void onSeasonClicked(Season season) {
             Intent intent =  new Intent(this.context, SeasonDetailsActivity.class);
             intent.putExtra(InformationKeys.SEASON,season.number());
-            intent.putExtra(InformationKeys.SHOW,this.show);
+            intent.putExtra(InformationKeys.SHOW_SLUG,this.show);
             context.startActivity(intent);
         }
     }

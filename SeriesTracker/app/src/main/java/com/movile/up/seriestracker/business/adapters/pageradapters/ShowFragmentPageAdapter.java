@@ -29,7 +29,7 @@ public class ShowFragmentPageAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
 
         Bundle fragmentsParameters = new Bundle();
-        fragmentsParameters.putString(InformationKeys.SHOW,this.showName);
+        fragmentsParameters.putString(InformationKeys.SHOW_SLUG,this.showName);
 
         if(position==INFO_OPTION){
             ShowInformationFragment showInformationFragment = new ShowInformationFragment();

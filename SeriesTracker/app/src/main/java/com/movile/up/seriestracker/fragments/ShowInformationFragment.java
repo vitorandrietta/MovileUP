@@ -3,7 +3,6 @@ package com.movile.up.seriestracker.fragments;
 import android.os.Bundle;
 
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,25 +11,26 @@ import android.widget.TextView;
 
 import com.movile.up.seriestracker.R;
 import com.movile.up.seriestracker.business.presenters.ShowDetailsPresenter;
+import com.movile.up.seriestracker.business.presenters.ShowFragmentDetailsPresenter;
+import com.movile.up.seriestracker.interfaces.view.ShowFragmentDetailsView;
 import com.movile.up.seriestracker.util.FormatUtil;
 import com.movile.up.seriestracker.util.InformationKeys;
 import com.movile.up.seriestracker.interfaces.view.ShowDetailsView;
 import com.movile.up.seriestracker.model.models.Show;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 
-public class ShowInformationFragment extends Fragment implements ShowDetailsView {
+public class ShowInformationFragment extends Fragment implements ShowFragmentDetailsView {
     private static  final String TAG = ShowInformationFragment.class.getSimpleName();
     private View root;
-    private ShowDetailsPresenter presenter;
+    private ShowFragmentDetailsPresenter presenter;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         this.root = inflater.inflate(R.layout.fragment_show_information, container, false);
-        presenter = new ShowDetailsPresenter(getActivity(),this);
-        String show = this.getArguments().getString(InformationKeys.SHOW);
+        presenter = new ShowFragmentDetailsPresenter(getActivity(),this);
+        String show = this.getArguments().getString(InformationKeys.SHOW_SLUG);
         presenter.processShow(show);
         return  this.root;
 
@@ -80,13 +80,5 @@ public class ShowInformationFragment extends Fragment implements ShowDetailsView
         description.setText(description.getText().toString().concat(" "+show.overview()));
     }
 
-    @Override
-    public void changeButtonVisualState(boolean state) {
 
-    }
-
-    @Override
-    public void setButtonState(boolean state) {
-
-    }
 }

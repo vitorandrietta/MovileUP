@@ -113,7 +113,8 @@ public class GridShowAdapter extends ArrayAdapter<Show> {
         @Override
         public void onShowElementClick(Show show) {
             Intent intent = new Intent(this.context, ShowDetailsActivity.class);
-            intent.putExtra(InformationKeys.SHOW,show.ids().slug());
+            intent.putExtra(InformationKeys.SHOW_SLUG,show.ids().slug());
+            intent.putExtra(InformationKeys.SHOW_TITLE,show.title());
             context.startActivity(intent);
         }
     }

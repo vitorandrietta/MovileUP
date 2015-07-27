@@ -16,8 +16,8 @@ import com.movile.up.seriestracker.activities.support.BaseNavigationToolbarActiv
 import com.movile.up.seriestracker.business.adapters.pageradapters.ShowFragmentPageAdapter;
 import com.movile.up.seriestracker.business.assynctask.DeleteFavoriteTask;
 import com.movile.up.seriestracker.business.assynctask.InsertFavoriteTask;
-import com.movile.up.seriestracker.business.assynctask.IsFavoriteTask;
 import com.movile.up.seriestracker.business.presenters.ShowDetailsPresenter;
+import com.movile.up.seriestracker.database_dbflow.FavoriteEntity;
 import com.movile.up.seriestracker.interfaces.view.FavButtonClick;
 import com.movile.up.seriestracker.util.ImageTypes;
 import com.movile.up.seriestracker.util.InformationKeys;
@@ -31,6 +31,7 @@ public class ShowDetailsActivity extends BaseNavigationToolbarActivity implement
 
     private ShowDetailsPresenter presenter;
     private String showSlug;
+    private String showTitle;
     private FloatingActionButton favoriteButton;
     private boolean favoriteButtonState;
 
@@ -42,15 +43,15 @@ public class ShowDetailsActivity extends BaseNavigationToolbarActivity implement
         this.showLoading();
         ViewPager pager = (ViewPager) findViewById(R.id.view_pager);
         Intent intent = getIntent();
-        showSlug = intent.getStringExtra(InformationKeys.SHOW);
+        showSlug = intent.getStringExtra(InformationKeys.SHOW_SLUG);
+        showTitle = intent.getStringExtra(InformationKeys.SHOW_TITLE);
         ShowFragmentPageAdapter showViewPagerAdapter = new ShowFragmentPageAdapter(getSupportFragmentManager(),showSlug);
         pager.setAdapter(showViewPagerAdapter);
         presenter = new ShowDetailsPresenter(this,this);
         presenter.processShow(showSlug);
+
         getSupportActionBar().setTitle(showSlug.replaceAll("-", " "));
         favoriteButton = (FloatingActionButton) findViewById(R.id.show_details_favorite);
-
-
         favoriteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -58,7 +59,7 @@ public class ShowDetailsActivity extends BaseNavigationToolbarActivity implement
             }
         });
 
-        presenter.loadFavorite(showSlug);
+        presenter.loadFavoriteButton(new FavoriteEntity(this.showSlug,this.showTitle),this);
         this.hideLoading();
 
     }
@@ -68,9 +69,6 @@ public class ShowDetailsActivity extends BaseNavigationToolbarActivity implement
         getMenuInflater().inflate(R.menu.menu_show_details, menu);
         return true;
     }
-
-
-
 
     @Override
     public void displayShow(Show show) {
@@ -105,10 +103,10 @@ public class ShowDetailsActivity extends BaseNavigationToolbarActivity implement
     }
 
     @Override
-    public void setButtonState(boolean state) {
-        this.favoriteButtonState = state;
+    public void loadButtonFirstState(FavoriteEntity entity) {
+        this.favoriteButtonState = (entity != null);
+        this.changeButtonVisualState(this.favoriteButtonState);
     }
-
 
     @Override
     public void onFavButtonClickCallback() {
@@ -116,10 +114,10 @@ public class ShowDetailsActivity extends BaseNavigationToolbarActivity implement
         this.changeButtonVisualState(this.favoriteButtonState);
 
         if(this.favoriteButtonState){
-            new InsertFavoriteTask().execute(this.showSlug);
+            new InsertFavoriteTask().execute(new FavoriteEntity(this.showSlug,this.showTitle));
         }
         else{
-           new DeleteFavoriteTask().execute(this.showSlug);
+           new DeleteFavoriteTask().execute(new FavoriteEntity(this.showSlug,this.showTitle));
         }
     }
 }
