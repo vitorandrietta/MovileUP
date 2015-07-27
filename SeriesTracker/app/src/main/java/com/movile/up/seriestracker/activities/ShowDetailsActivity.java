@@ -14,9 +14,10 @@ import com.bumptech.glide.Glide;
 import com.movile.up.seriestracker.R;
 import com.movile.up.seriestracker.activities.support.BaseNavigationToolbarActivity;
 import com.movile.up.seriestracker.business.adapters.pageradapters.ShowFragmentPageAdapter;
+import com.movile.up.seriestracker.business.assynctask.DeleteFavoriteTask;
+import com.movile.up.seriestracker.business.assynctask.InsertFavoriteTask;
+import com.movile.up.seriestracker.business.assynctask.IsFavoriteTask;
 import com.movile.up.seriestracker.business.presenters.ShowDetailsPresenter;
-import com.movile.up.seriestracker.database_dbflow.FavoriteDAO;
-import com.movile.up.seriestracker.database_dbflow.FavoriteEntity;
 import com.movile.up.seriestracker.interfaces.view.FavButtonClick;
 import com.movile.up.seriestracker.util.ImageTypes;
 import com.movile.up.seriestracker.util.InformationKeys;
@@ -57,9 +58,7 @@ public class ShowDetailsActivity extends BaseNavigationToolbarActivity implement
             }
         });
 
-
-        this.favoriteButtonState = FavoriteDAO.isFavorite(showSlug);
-        this.changeFavButtonState(this.favoriteButtonState);
+        new IsFavoriteTask(this).execute(this.showSlug);
         this.hideLoading();
 
     }
@@ -70,17 +69,7 @@ public class ShowDetailsActivity extends BaseNavigationToolbarActivity implement
         return true;
     }
 
-    public void changeFavButtonState (boolean state){
-        if(state) {
-            this.favoriteButton.setImageResource(R.drawable.show_details_favorite_on);
-            this.favoriteButton.setBackgroundTintList(getResources().getColorStateList(R.color.default_color_second));
-        }
 
-       else {
-            this.favoriteButton.setImageResource(R.drawable.show_details_favorite_off);
-            this.favoriteButton.setBackgroundTintList(getResources().getColorStateList(R.color.default_color_third));
-        }
-    }
 
 
     @Override
@@ -103,15 +92,34 @@ public class ShowDetailsActivity extends BaseNavigationToolbarActivity implement
     }
 
     @Override
+    public void changeButtonVisualState(boolean state) {
+        if(state) {
+            this.favoriteButton.setImageResource(R.drawable.show_details_favorite_on);
+            this.favoriteButton.setBackgroundTintList(getResources().getColorStateList(R.color.default_color_second));
+        }
+
+        else {
+            this.favoriteButton.setImageResource(R.drawable.show_details_favorite_off);
+            this.favoriteButton.setBackgroundTintList(getResources().getColorStateList(R.color.default_color_third));
+        }
+    }
+
+    @Override
+    public void setButtonState(boolean state) {
+        this.favoriteButtonState = state;
+    }
+
+
+    @Override
     public void onFavButtonClickCallback() {
         this.favoriteButtonState = !this.favoriteButtonState;
-        this.changeFavButtonState(this.favoriteButtonState);
+        this.changeButtonVisualState(this.favoriteButtonState);
 
         if(this.favoriteButtonState){
-            FavoriteDAO.insert(this.showSlug);
+            new InsertFavoriteTask().execute(this.showSlug);
         }
         else{
-            FavoriteDAO.delete(this.showSlug);
+           new DeleteFavoriteTask().execute(this.showSlug);
         }
     }
 }

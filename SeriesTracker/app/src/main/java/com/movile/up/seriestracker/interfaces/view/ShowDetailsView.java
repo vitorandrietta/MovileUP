@@ -7,4 +7,6 @@ import com.movile.up.seriestracker.model.models.Show;
  */
 public interface ShowDetailsView {
     public void displayShow(Show show);
+    public void changeButtonVisualState(boolean state);
+    public void setButtonState(boolean state);
 }

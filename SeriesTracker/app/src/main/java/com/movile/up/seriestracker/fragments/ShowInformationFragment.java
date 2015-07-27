@@ -79,4 +79,14 @@ public class ShowInformationFragment extends Fragment implements ShowDetailsView
         showLanguage.setText(showLanguage.getText().toString().concat(" "+show.language()));
         description.setText(description.getText().toString().concat(" "+show.overview()));
     }
+
+    @Override
+    public void changeButtonVisualState(boolean state) {
+
+    }
+
+    @Override
+    public void setButtonState(boolean state) {
+
+    }
 }

@@ -16,6 +16,7 @@ public  class JsonToEpisodeTask extends AsyncTask<Void,Void,Episode>{
     private  Context context;
     private OnOperationListener<Episode> operation;
 
+
     public JsonToEpisodeTask(Context currentContext, OnOperationListener<Episode> operation){
         super();
         this.context = currentContext;

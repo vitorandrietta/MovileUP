@@ -27,11 +27,12 @@ public class FavoriteDAO {
     }
 
     public static  boolean isFavorite(String show){
-
         Cursor cursor = new Select().from(FavoriteEntity.class).
         where(Condition.column(FavoriteEntity$Table.SLUG).eq(show)).
         queryCursorList().getCursor();
-        return  cursor.moveToFirst();
+        boolean favorite = cursor.moveToFirst();
+        cursor.close();
+        return  favorite;
     }
 
 }
