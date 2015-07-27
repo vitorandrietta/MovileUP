@@ -4,7 +4,7 @@
     <dimen name="default_spacing_medium">8dp</dimen>
     <dimen name="default_genre_card_margin">9dp</dimen>
     <dimen name="default_spacing_large">16dp</dimen>
-
+    <dimen name="base_navigation_drawer_content_width">300dp</dimen>
     <dimen name="default_textSize_verySmall">12sp</dimen>
     <dimen name="default_textSize_small">14sp</dimen>
     <dimen name="default_textSize_medium">16sp</dimen>
@@ -58,6 +58,7 @@
     <dimen name="default_show_image_height">170dp</dimen>
     <dimen name="default_grid_show_image_spacement">5dp</dimen>
     <dimen name="default_ended_show_card_margin_top">70dp</dimen>
+    <dimen name="default_not_found_fav_margin_top">23dp</dimen>
 
 
     <!--292dp-->

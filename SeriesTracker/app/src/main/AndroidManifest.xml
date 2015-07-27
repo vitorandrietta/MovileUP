@@ -5,68 +5,58 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
-
     <application
+        android:name=".application.SeriesTrackerApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:name=".application.SeriesTrackerApplication"
-        android:theme="@style/AppTheme">
-
+        android:theme="@style/AppTheme" >
         <activity
             android:name=".activities.SeasonDetailsActivity"
             android:label="@string/title_activity_season_details" >
         </activity>
-
         <activity
             android:name=".activities.EpisodeDetailsActivity"
             android:label="@string/app_name" >
         </activity>
-
         <activity
             android:name=".activities.support.BaseNavigationToolbarActivity"
             android:label="@string/title_activity_base_navigation_toolbar_activity" >
         </activity>
-
         <activity
             android:name=".activities.support.BaseLoadingActivity"
             android:label="@string/title_activity_base_loading_activity" >
         </activity>
-
         <activity
             android:name=".activities.ShowDetailsActivity"
             android:label="@string/title_activity_show_details"
-            android:parentActivityName=".activities.ShowsActivity"
-            >
-
+            android:parentActivityName=".activities.ShowsActivity" >
         </activity>
-
         <activity
             android:name=".activities.ShowsActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
         <service
             android:name=".business.services.UpdateService"
-            android:enabled = "true"
+            android:enabled="true"
             android:exported="false" />
 
         <receiver
-            android:name="com.movile.up.seriestracker.business.broadcasters.BroadcastUpdateReceiver"
-            android:exported="false">
+            android:name=".business.broadcasters.BroadcastUpdateReceiver"
+            android:exported="false" >
             <intent-filter>
                 <action android:name="com.movile.up.seriestracker.action.SHOW_UPDATE" />
             </intent-filter>
         </receiver>
-
-
         <receiver
             android:name=".business.broadcasters.BootUpdateBroadcast"
-            android:exported="false">
+            android:exported="false" >
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
@@ -76,6 +66,10 @@
             android:name="com.movile.up.seriestracker.util.GlideConfiguration"
             android:value="GlideModule" />
 
+        <activity
+            android:name=".activities.support.BaseNavigationDrawer"
+            android:label="@string/title_activity_base_navigation_drawer" >
+        </activity>
     </application>
 
 </manifest>
