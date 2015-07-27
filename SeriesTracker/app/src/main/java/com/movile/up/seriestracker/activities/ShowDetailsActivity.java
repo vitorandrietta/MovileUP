@@ -15,8 +15,8 @@ import com.movile.up.seriestracker.R;
 import com.movile.up.seriestracker.activities.support.BaseNavigationToolbarActivity;
 import com.movile.up.seriestracker.business.adapters.pageradapters.ShowFragmentPageAdapter;
 import com.movile.up.seriestracker.business.presenters.ShowDetailsPresenter;
-import com.movile.up.seriestracker.database.FavoriteDAO;
-import com.movile.up.seriestracker.database.FavoriteEntity;
+import com.movile.up.seriestracker.database_dbflow.FavoriteDAO;
+import com.movile.up.seriestracker.database_dbflow.FavoriteEntity;
 import com.movile.up.seriestracker.interfaces.view.FavButtonClick;
 import com.movile.up.seriestracker.util.ImageTypes;
 import com.movile.up.seriestracker.util.InformationKeys;
@@ -27,7 +27,7 @@ import com.movile.up.seriestracker.model.models.Show;
 
 public class ShowDetailsActivity extends BaseNavigationToolbarActivity implements ShowDetailsView ,FavButtonClick {
 
-    private FavoriteDAO favoriteDAO;
+
     private ShowDetailsPresenter presenter;
     private String showSlug;
     private FloatingActionButton favoriteButton;
@@ -48,7 +48,7 @@ public class ShowDetailsActivity extends BaseNavigationToolbarActivity implement
         presenter.processShow(showSlug);
         getSupportActionBar().setTitle(showSlug.replaceAll("-", " "));
         favoriteButton = (FloatingActionButton) findViewById(R.id.show_details_favorite);
-        favoriteDAO = new FavoriteDAO(this);
+
 
         favoriteButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,7 +57,8 @@ public class ShowDetailsActivity extends BaseNavigationToolbarActivity implement
             }
         });
 
-        this.favoriteButtonState = favoriteDAO.isFavorite(showSlug);
+
+        this.favoriteButtonState = FavoriteDAO.isFavorite(showSlug);
         this.changeFavButtonState(this.favoriteButtonState);
         this.hideLoading();
 
@@ -107,10 +108,10 @@ public class ShowDetailsActivity extends BaseNavigationToolbarActivity implement
         this.changeFavButtonState(this.favoriteButtonState);
 
         if(this.favoriteButtonState){
-            this.favoriteDAO.insert(new FavoriteEntity(this.showSlug).toContentValues());
+            FavoriteDAO.insert(this.showSlug);
         }
         else{
-            this.favoriteDAO.delete(showSlug);
+            FavoriteDAO.delete(this.showSlug);
         }
     }
 }
