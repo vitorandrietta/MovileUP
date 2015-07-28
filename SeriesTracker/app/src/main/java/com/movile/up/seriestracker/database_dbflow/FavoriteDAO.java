@@ -31,4 +31,7 @@ public class FavoriteDAO {
         return  entity;
     }
 
+    public static Cursor getAllFavorites(){
+        return new Select().from(FavoriteEntity.class).queryCursorList().getCursor();
+    }
 }

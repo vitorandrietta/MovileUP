@@ -66,6 +66,7 @@
     <dimen name="default_favorite_list_header_tv_image_height">69.3dp</dimen>
     <dimen name="default_favorite_list_header_tv_image_width">69dp</dimen>
     <dimen name="default_favorite_message_margin_top">127dp</dimen>
+    <dimen name="default_favorite_list_height">197dp</dimen>
 
 
     <!--292dp-->

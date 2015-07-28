@@ -29,7 +29,7 @@
     <string name="title_activity_show_details">show_details</string>
     <string name="base_navigation_drawer_open">Open</string>
     <string name="base_navigation_drawer_close">Close</string>
-    <string name="not_found_favorites_message">No show found</string>
+    <string name="not_found_favorites_message">No shows found</string>
 <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_shows">ShowsActivity</string>

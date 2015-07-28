@@ -3,16 +3,14 @@ package com.movile.up.seriestracker.activities.support;
 import android.content.res.Configuration;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.movile.up.seriestracker.R;
+import com.movile.up.seriestracker.fragments.FavoritesFragment;
+
 
 public class BaseNavigationDrawer extends BaseLoadingActivity {
 
@@ -36,10 +34,11 @@ public class BaseNavigationDrawer extends BaseLoadingActivity {
         configureToolbar();
         configureNavigationDrawer();
         configureNavigationDrawerContent();
+
     }
 
     private void configureNavigationDrawerContent() {
-        //getSupportFragmentManager().beginTransaction().add(R.id.base_navigation_drawer_content, new FavoritesFragment(), "favorites").commit();
+        getSupportFragmentManager().beginTransaction().add(R.id.base_navigation_drawer_content, new FavoritesFragment(), "favorites").commit();
     }
 
     private void configureNavigationDrawer() {
@@ -62,8 +61,9 @@ public class BaseNavigationDrawer extends BaseLoadingActivity {
     }
 
     private void configureToolbar() {
-        mToolbar = (Toolbar) findViewById(R.id.base_navigation_drawer_toolbar);
+        mToolbar = (Toolbar) mRoot.findViewById(R.id.base_navigation_drawer_toolbar);
         setSupportActionBar(mToolbar);
+
     }
 
     @Override

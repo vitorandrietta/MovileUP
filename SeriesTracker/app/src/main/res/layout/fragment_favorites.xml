@@ -1,18 +1,29 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@color/default_textColor_first"
-    tools:context="com.movile.up.seriestracker.fragments.FavoritesFragment">
+    tools:context="com.movile.up.seriestracker.fragments.FavoritesFragment"
+    android:orientation="vertical"
+    >
 
     <ListView
         android:id="@+id/favoriteList"
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
-        android:layout_marginTop="@dimen/default_favorite_list_margin_top"
-
         >
     </ListView>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:textColor="@color/default_textColor_fifth"
+        android:textSize="@dimen/default_textSize_medium"
+        android:fontFamily="Roboto-Medium"
+        android:text="@string/not_found_favorites_message"
+        android:visibility="invisible"
+        android:id="@+id/not_found_favorites_text"
+        >
+    </TextView>
 
 </LinearLayout>

@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import android.widget.GridView;
 
 import com.movile.up.seriestracker.R;
+import com.movile.up.seriestracker.activities.support.BaseNavigationDrawer;
 import com.movile.up.seriestracker.business.adapters.gridadapters.GridShowAdapter;
 import com.movile.up.seriestracker.business.presenters.ShowsDetailsPresenter;
 import com.movile.up.seriestracker.business.services.UpdateService;
@@ -19,13 +20,15 @@ import com.movile.up.seriestracker.model.models.Show;
 
 import java.util.List;
 
-public class ShowsActivity extends AppCompatActivity implements ShowsDetailsView {
+public class ShowsActivity extends BaseNavigationDrawer implements ShowsDetailsView {
 
     private GridShowAdapter showAdapter;
     private ShowsDetailsPresenter presenter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_shows);
+        this.configureNavigation();
         setContentView(R.layout.activity_shows);
         showAdapter = new GridShowAdapter(this,R.layout.show_image_layout);
         GridView showsGrid = (GridView) findViewById(R.id.shows_grid_view);

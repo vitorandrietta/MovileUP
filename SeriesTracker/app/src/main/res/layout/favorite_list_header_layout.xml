@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="@dimen/default_favorite_list_header_height"
     android:id="@+id/favorite_header_container"
@@ -26,6 +31,12 @@
         android:text="@string/favorite_header_message"
         android:fontFamily="Roboto-Regular"
 
-        />
-
+       />
 </RelativeLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/default_favorite_list_item_margin_left"
+         >
+    </View>
+</LinearLayout>
+
