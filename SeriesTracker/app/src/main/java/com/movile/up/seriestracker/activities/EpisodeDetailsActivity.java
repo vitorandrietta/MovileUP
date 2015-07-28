@@ -40,7 +40,7 @@ public class EpisodeDetailsActivity extends BaseNavigationToolbarActivity implem
         presenter.presentEpisode(show, season, episodes);
     }
 
-
+//load from cursor, viewHolder, botao nao global
 
     @Override
     public void displayEpisode(Episode episode) {

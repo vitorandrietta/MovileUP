@@ -61,7 +61,7 @@ public class BaseNavigationDrawer extends BaseLoadingActivity {
     }
 
     private void configureToolbar() {
-        mToolbar = (Toolbar) mRoot.findViewById(R.id.base_navigation_drawer_toolbar);
+        mToolbar = (Toolbar) findViewById(R.id.base_navigation_drawer_toolbar);
         setSupportActionBar(mToolbar);
 
     }

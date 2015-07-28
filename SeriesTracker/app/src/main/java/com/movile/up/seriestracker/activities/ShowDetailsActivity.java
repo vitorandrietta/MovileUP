@@ -64,11 +64,7 @@ public class ShowDetailsActivity extends BaseNavigationToolbarActivity implement
 
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_show_details, menu);
-        return true;
-    }
+
 
     @Override
     public void displayShow(Show show) {
