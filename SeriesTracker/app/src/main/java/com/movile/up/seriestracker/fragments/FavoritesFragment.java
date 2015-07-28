@@ -39,6 +39,7 @@ public class FavoritesFragment extends Fragment implements FavoritesFragmentDeta
 
     @Override
     public void onStart() {
+        super.onStart();
         presenter.presentFavorites();
     }
 

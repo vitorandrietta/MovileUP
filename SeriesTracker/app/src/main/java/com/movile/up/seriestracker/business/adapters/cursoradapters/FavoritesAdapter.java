@@ -44,10 +44,11 @@ public class FavoritesAdapter extends CursorAdapter implements FavoriteListItemC
 
     @Override
     public void bindView(View view, Context context, Cursor cursor) {
-        TextView favoriteShow = (TextView) view.findViewById(R.id.favoriteShow);
+        ViewHolder holder = new ViewHolder(view);
+        view.setTag(holder);
         final FavoriteEntity currentEntity = favoriteEntityAdapter.loadFromCursor(cursor);
         view.setOnClickListener(null);
-        favoriteShow.setText(currentEntity.getTitle());
+        holder.showTitleText.setText(currentEntity.getTitle());
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -69,9 +70,21 @@ public class FavoritesAdapter extends CursorAdapter implements FavoriteListItemC
 
     private class ViewHolder{
 
+        View root;
+        TextView showTitleText;
 
+        public ViewHolder(View root){
+            this.root = root;
+            this.showTitleText = (TextView) root.findViewById(R.id.favoriteShow);
+        }
 
+        public View getRoot() {
+            return root;
+        }
 
+        public TextView getShowTitleText() {
+            return showTitleText;
+        }
     }
 
     @Override
