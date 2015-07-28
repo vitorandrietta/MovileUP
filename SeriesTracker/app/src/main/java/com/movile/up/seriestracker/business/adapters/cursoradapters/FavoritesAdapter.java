@@ -12,8 +12,10 @@ import android.widget.TextView;
 import com.movile.up.seriestracker.R;
 import com.movile.up.seriestracker.activities.ShowDetailsActivity;
 import com.movile.up.seriestracker.database_dbflow.FavoriteEntity;
+import com.movile.up.seriestracker.database_dbflow.FavoriteEntity$Adapter;
 import com.movile.up.seriestracker.database_dbflow.FavoriteEntity$Table;
 import com.movile.up.seriestracker.interfaces.view.FavoriteListItemClick;
+import com.movile.up.seriestracker.model.models.Favorite;
 import com.movile.up.seriestracker.util.InformationKeys;
 
 //trocar para model
@@ -26,11 +28,12 @@ import java.util.List;
 public class FavoritesAdapter extends CursorAdapter implements FavoriteListItemClick {
 
     private Context context;
-
+    private FavoriteEntity$Adapter favoriteEntityAdapter;
 
     public FavoritesAdapter(Context context, Cursor c, int flags) {
         super(context, c, flags);
         this.context = context;
+        this.favoriteEntityAdapter = new FavoriteEntity$Adapter();
     }
 
     @Override
@@ -42,14 +45,13 @@ public class FavoritesAdapter extends CursorAdapter implements FavoriteListItemC
     @Override
     public void bindView(View view, Context context, Cursor cursor) {
         TextView favoriteShow = (TextView) view.findViewById(R.id.favoriteShow);
-        final String showTitle = cursor.getString(cursor.getColumnIndex(FavoriteEntity$Table.TITLE));
-        final String showSlug = cursor.getString(cursor.getColumnIndex(FavoriteEntity$Table.SLUG));
+        final FavoriteEntity currentEntity = favoriteEntityAdapter.loadFromCursor(cursor);
         view.setOnClickListener(null);
-        favoriteShow.setText(showTitle);
+        favoriteShow.setText(currentEntity.getTitle());
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FavoritesAdapter.this.onFavoriteItemClickCallback(new FavoriteEntity(showSlug, showTitle));
+                FavoritesAdapter.this.onFavoriteItemClickCallback(currentEntity);
             }
         });
 
