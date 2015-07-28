@@ -18,7 +18,8 @@
         android:layout_centerVertical="true"
         android:layout_centerInParent="true"
         android:id="@+id/tv_favorite_image"
-        android:background="@drawable/favorites_header_tv_unhappy"
+        android:src="@drawable/favorites_header_tv_unhappy"
+
         />
 
     <TextView

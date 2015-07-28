@@ -38,8 +38,7 @@ public class FavoritesFragment extends Fragment implements FavoritesFragmentDeta
     }
 
     @Override
-    public void onResume() {
-        super.onResume();
+    public void onStart() {
         presenter.presentFavorites();
     }
 

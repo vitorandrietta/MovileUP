@@ -67,6 +67,13 @@ public class FavoritesAdapter extends CursorAdapter implements FavoriteListItemC
 
     }
 
+    private class ViewHolder{
+
+
+
+
+    }
+
     @Override
     public boolean isEmpty() {
         return false;
