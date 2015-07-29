@@ -133,6 +133,7 @@ public class ShowDetailsActivity extends BaseNavigationToolbarActivity implement
         scaleXAnimationHide.setDuration(150L);
 
         scaleXAnimationHide.addListener(new AnimatorListenerAdapter() {
+
             @Override
             public void onAnimationCancel(Animator animation) {
                 super.onAnimationCancel(animation);

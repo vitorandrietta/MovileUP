@@ -40,11 +40,9 @@ public class EpisodeDetailsActivity extends BaseNavigationToolbarActivity implem
         presenter.presentEpisode(show, season, episodes);
     }
 
-//botao nao global
 
     @Override
     public void displayEpisode(Episode episode) {
-
         Date episodeDate = FormatUtil.formatDate(episode.firstAired());
         String episodeFormatedBeginTime = FormatUtil.formatDate(episodeDate);
         TextView episodeDescriptionText = (TextView) findViewById(R.id.episodeDescription);
