@@ -5,4 +5,5 @@ package com.movile.up.seriestracker.interfaces.view;
  */
 public interface FavButtonClick {
     void onFavButtonClickCallback();
+    void favoriteButtonAnimationTransition(boolean state);
  }

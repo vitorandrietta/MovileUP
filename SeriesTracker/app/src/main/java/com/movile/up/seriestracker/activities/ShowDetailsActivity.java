@@ -1,5 +1,9 @@
 package com.movile.up.seriestracker.activities;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.view.ViewPager;
@@ -87,15 +91,20 @@ public class ShowDetailsActivity extends BaseNavigationToolbarActivity implement
 
     @Override
     public void changeButtonVisualState(boolean state) {
+
         if(state) {
-            this.favoriteButton.setImageResource(R.drawable.show_details_favorite_on);
-            this.favoriteButton.setBackgroundTintList(getResources().getColorStateList(R.color.default_color_second));
+          this.favoriteButton.
+          setImageResource(R.drawable.show_details_favorite_on);
+          this.favoriteButton.setBackgroundTintList
+                  (getResources().getColorStateList(R.color.default_color_second));
+        }
+        else {
+          this.favoriteButton.setImageResource(R.drawable.show_details_favorite_off);
+          this.favoriteButton. setBackgroundTintList(getResources().getColorStateList
+                  (R.color.default_color_third));
         }
 
-        else {
-            this.favoriteButton.setImageResource(R.drawable.show_details_favorite_off);
-            this.favoriteButton.setBackgroundTintList(getResources().getColorStateList(R.color.default_color_third));
-        }
+
     }
 
     @Override
@@ -107,13 +116,41 @@ public class ShowDetailsActivity extends BaseNavigationToolbarActivity implement
     @Override
     public void onFavButtonClickCallback() {
         this.favoriteButtonState = !this.favoriteButtonState;
-        this.changeButtonVisualState(this.favoriteButtonState);
+        this.favoriteButtonAnimationTransition(this.favoriteButtonState);
 
         if(this.favoriteButtonState){
-            new InsertFavoriteTask().execute(new FavoriteEntity(this.showSlug,this.showTitle));
+            new InsertFavoriteTask().execute(new FavoriteEntity(this.showSlug, this.showTitle));
         }
         else{
-           new DeleteFavoriteTask().execute(new FavoriteEntity(this.showSlug,this.showTitle));
+           new DeleteFavoriteTask().execute(new FavoriteEntity(this.showSlug, this.showTitle));
         }
+    }
+
+    @Override
+    public void favoriteButtonAnimationTransition(final boolean state) {
+        ObjectAnimator scaleXAnimationHide = ObjectAnimator.ofFloat
+                (this.favoriteButton,View.SCALE_X,1f,0f);
+        scaleXAnimationHide.setDuration(350L);
+
+        scaleXAnimationHide.addListener(new AnimatorListenerAdapter() {
+            @Override
+            public void onAnimationCancel(Animator animation) {
+                super.onAnimationCancel(animation);
+                ShowDetailsActivity.this.changeButtonVisualState(state);
+            }
+
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                super.onAnimationEnd(animation);
+                ShowDetailsActivity.this.changeButtonVisualState(state);
+                ObjectAnimator scaleXAnimationShow = ObjectAnimator.
+                        ofFloat(ShowDetailsActivity.this.favoriteButton,View.SCALE_X,0f,1f);
+                scaleXAnimationShow.setDuration(350L);
+                scaleXAnimationShow.start();
+
+            }
+        });
+
+        scaleXAnimationHide.start();
     }
 }

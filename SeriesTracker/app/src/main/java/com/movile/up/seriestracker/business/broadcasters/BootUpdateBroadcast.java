@@ -12,8 +12,9 @@ import com.movile.up.seriestracker.business.services.UpdateService;
 public class BootUpdateBroadcast extends BroadcastUpdateReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
+       /* Eliminando para evitar consumo exagerado de memória
         PendingIntent pendingIntent = PendingIntent.getService(context, 0, new Intent(context, UpdateService.class), 0);
         AlarmManager manager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
-        manager.setRepeating(AlarmManager.RTC_WAKEUP,0, 10000, pendingIntent);
+        manager.setRepeating(AlarmManager.RTC_WAKEUP,0, 10000, pendingIntent);*/
     }
 }
