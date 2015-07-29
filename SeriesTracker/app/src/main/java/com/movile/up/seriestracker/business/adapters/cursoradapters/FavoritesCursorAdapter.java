@@ -13,24 +13,21 @@ import com.movile.up.seriestracker.R;
 import com.movile.up.seriestracker.activities.ShowDetailsActivity;
 import com.movile.up.seriestracker.database_dbflow.FavoriteEntity;
 import com.movile.up.seriestracker.database_dbflow.FavoriteEntity$Adapter;
-import com.movile.up.seriestracker.database_dbflow.FavoriteEntity$Table;
 import com.movile.up.seriestracker.interfaces.view.FavoriteListItemClick;
-import com.movile.up.seriestracker.model.models.Favorite;
 import com.movile.up.seriestracker.util.InformationKeys;
 
 //trocar para model
-import java.util.ArrayList;
-import java.util.List;
+
 
 /**
  * Created by android on 7/27/15.
  */
-public class FavoritesAdapter extends CursorAdapter implements FavoriteListItemClick {
+public class FavoritesCursorAdapter extends CursorAdapter implements FavoriteListItemClick {
 
     private Context context;
     private FavoriteEntity$Adapter favoriteEntityAdapter;
 
-    public FavoritesAdapter(Context context, Cursor c, int flags) {
+    public FavoritesCursorAdapter(Context context, Cursor c, int flags) {
         super(context, c, flags);
         this.context = context;
         this.favoriteEntityAdapter = new FavoriteEntity$Adapter();
@@ -52,20 +49,14 @@ public class FavoritesAdapter extends CursorAdapter implements FavoriteListItemC
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FavoritesAdapter.this.onFavoriteItemClickCallback(currentEntity);
+                FavoritesCursorAdapter.this.onFavoriteItemClickCallback(currentEntity);
             }
         });
 
     }
 
     public void update(Cursor favoritesCursor){
-
-        if (this.getCursor() != null) {
-            this.getCursor().close();
-        }
-
-        this.swapCursor(favoritesCursor);
-
+        this.changeCursor(favoritesCursor);
     }
 
     private class ViewHolder{

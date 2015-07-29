@@ -3,8 +3,6 @@ package com.movile.up.seriestracker.fragments;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.LoaderManager;
-import android.support.v4.content.Loader;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,13 +11,13 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.movile.up.seriestracker.R;
-import com.movile.up.seriestracker.business.adapters.cursoradapters.FavoritesAdapter;
+import com.movile.up.seriestracker.business.adapters.cursoradapters.FavoritesCursorAdapter;
 import com.movile.up.seriestracker.business.presenters.FragmentFavoritesDetailsPresenter;
 import com.movile.up.seriestracker.interfaces.view.FavoritesFragmentDetailsView;
 
 public class FavoritesFragment extends Fragment implements FavoritesFragmentDetailsView {
 
-    private FavoritesAdapter favoriteAdapter;
+    private FavoritesCursorAdapter favoriteAdapter;
     private View listHeaderView;
     private FragmentFavoritesDetailsPresenter presenter;
     private View root;
@@ -29,7 +27,7 @@ public class FavoritesFragment extends Fragment implements FavoritesFragmentDeta
         ListView favoritesList = (ListView) root.findViewById(R.id.favoriteList);
         listHeaderView = inflater.inflate(R.layout.favorite_list_header_layout, null);
         favoritesList.addHeaderView(listHeaderView);
-        favoriteAdapter = new FavoritesAdapter(getActivity(),null,0);
+        favoriteAdapter = new FavoritesCursorAdapter(getActivity(),null,0);
         favoritesList.setAdapter(favoriteAdapter);
         presenter = new FragmentFavoritesDetailsPresenter(this,getActivity(),getActivity().
         getSupportLoaderManager());

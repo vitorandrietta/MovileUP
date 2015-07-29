@@ -27,13 +27,7 @@ public class ShowRestClient  {
 
 
     public static void processShow(String show, final ShowPresenter presenter, Context context) {
-        RestAdapter mAdapter = new RestAdapter.Builder().setRequestInterceptor(new RequestInterceptor() {
-            @Override
-            public void intercept(RequestFacade request) {
-                request.addHeader("trakt-api-key", ApiConfiguration.API_KEY);
-                request.addHeader("trakt-api-version",ApiConfiguration.API_VERSION);
-            }
-        }).setEndpoint(context.getString(R.string.api_url_base)).build();
+        RestAdapter mAdapter = new RestAdapter.Builder().setEndpoint(context.getString(R.string.api_url_base)).build();
         ShowRemoteService service = mAdapter.create(ShowRemoteService.class);
 
         service.getShowDetails(show, new Callback<Show>() {
@@ -52,13 +46,7 @@ public class ShowRestClient  {
 
     public static void processShows(final ShowsPresenter presenter, Context context) {
 
-        RestAdapter mAdapter = new RestAdapter.Builder().setRequestInterceptor(new RequestInterceptor() {
-            @Override
-            public void intercept(RequestFacade request) {
-                request.addHeader("trakt-api-key", ApiConfiguration.API_KEY);
-                request.addHeader("trakt-api-version",ApiConfiguration.API_VERSION);
-            }
-        }).setEndpoint(context.getString(R.string.api_url_base)).build();
+        RestAdapter mAdapter = new RestAdapter.Builder().setEndpoint(context.getString(R.string.api_url_base)).build();
         ShowRemoteService service = mAdapter.create(ShowRemoteService.class);
 
         service.getShows(new Callback<List<Show>>() {

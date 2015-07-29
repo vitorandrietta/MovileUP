@@ -130,7 +130,7 @@ public class ShowDetailsActivity extends BaseNavigationToolbarActivity implement
     public void favoriteButtonAnimationTransition(final boolean state) {
         ObjectAnimator scaleXAnimationHide = ObjectAnimator.ofFloat
                 (this.favoriteButton,View.SCALE_X,1f,0f);
-        scaleXAnimationHide.setDuration(350L);
+        scaleXAnimationHide.setDuration(150L);
 
         scaleXAnimationHide.addListener(new AnimatorListenerAdapter() {
             @Override
@@ -145,7 +145,7 @@ public class ShowDetailsActivity extends BaseNavigationToolbarActivity implement
                 ShowDetailsActivity.this.changeButtonVisualState(state);
                 ObjectAnimator scaleXAnimationShow = ObjectAnimator.
                         ofFloat(ShowDetailsActivity.this.favoriteButton,View.SCALE_X,0f,1f);
-                scaleXAnimationShow.setDuration(350L);
+                scaleXAnimationShow.setDuration(150L);
                 scaleXAnimationShow.start();
 
             }

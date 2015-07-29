@@ -25,13 +25,7 @@ public class SeasonFragmentRestClient  {
     private  static final String TAG = SeasonFragmentClient.class.getSimpleName();
 
     public static void processSeasons(String show, final FragmentSeasonPresenter presenter, Context context) {
-        RestAdapter mAdapter = new RestAdapter.Builder().setRequestInterceptor(new RequestInterceptor() {
-            @Override
-            public void intercept(RequestFacade request) {
-                request.addHeader("trakt-api-key", ApiConfiguration.API_KEY);
-                request.addHeader("trakt-api-version",ApiConfiguration.API_VERSION);
-            }
-        }).setEndpoint(context.getString(R.string.api_url_base)).build();
+        RestAdapter mAdapter = new RestAdapter.Builder().setEndpoint(context.getString(R.string.api_url_base)).build();
         SeasonRemoteService service = mAdapter.create(SeasonRemoteService.class);
 
         service.getSeasons(show, new Callback<List<Season>>() {

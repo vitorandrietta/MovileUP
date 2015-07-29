@@ -18,6 +18,7 @@ public class BaseNavigationDrawer extends BaseLoadingActivity {
     protected DrawerLayout mDrawerLayout;
     protected ActionBarDrawerToggle mDrawerToggle;
     protected Toolbar mToolbar;
+    public static final String DRAWER_FRAGMENT_TAG = "favorites";
 
     @Override
     public void setContentView(int layoutResID) {
@@ -38,7 +39,9 @@ public class BaseNavigationDrawer extends BaseLoadingActivity {
     }
 
     private void configureNavigationDrawerContent() {
-        getSupportFragmentManager().beginTransaction().add(R.id.base_navigation_drawer_content, new FavoritesFragment(), "favorites").commit();
+        if (getSupportFragmentManager().findFragmentByTag(DRAWER_FRAGMENT_TAG) == null) {
+            getSupportFragmentManager().beginTransaction().add(R.id.base_navigation_drawer_content, new FavoritesFragment(), DRAWER_FRAGMENT_TAG).commit();
+        }
     }
 
     private void configureNavigationDrawer() {

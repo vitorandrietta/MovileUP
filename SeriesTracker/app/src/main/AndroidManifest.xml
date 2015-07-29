@@ -14,39 +14,38 @@
         <activity
             android:name=".activities.SeasonDetailsActivity"
             android:label="@string/title_activity_season_details"
-            android:screenOrientation="portrait"
+
             >
 
         </activity>
         <activity
             android:name=".activities.EpisodeDetailsActivity"
             android:label="@string/app_name"
-            android:screenOrientation="portrait"
+
             >
         </activity>
         <activity
             android:name=".activities.support.BaseNavigationToolbarActivity"
             android:label="@string/title_activity_base_navigation_toolbar_activity"
-            android:screenOrientation="portrait"
+
             >
         </activity>
         <activity
             android:name=".activities.support.BaseLoadingActivity"
             android:label="@string/title_activity_base_loading_activity"
-            android:screenOrientation="portrait"
+
             >
         </activity>
         <activity
             android:name=".activities.ShowDetailsActivity"
             android:label="@string/title_activity_show_details"
             android:parentActivityName=".activities.ShowsActivity"
-            android:screenOrientation="portrait"
+
             >
         </activity>
         <activity
             android:name=".activities.ShowsActivity"
             android:label="@string/app_name"
-            android:screenOrientation="portrait"
             >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -81,7 +80,6 @@
         <activity
             android:name=".activities.support.BaseNavigationDrawer"
             android:label="@string/title_activity_base_navigation_drawer"
-            android:screenOrientation="portrait"
             >
         </activity>
     </application>
